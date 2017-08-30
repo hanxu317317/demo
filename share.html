@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Burberry</title>
+		<link rel="stylesheet" type="text/css" href="style/style.css" />
+        <link rel="stylesheet" type="text/css" href="style/steps.css?10"/>
+        <link rel="stylesheet" type="text/css" href="style/self.css" />
+		<link rel="stylesheet" type="text/css" href="style/animate.min.css" />
+		<link rel="stylesheet" type="text/css" href="style/animations.css" />
+		<link rel="stylesheet" type="text/css" href="style/swiper-3.3.1.min.css" />
+		<script src="js/jquery-2.0.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+
+		<meta name="viewport" content="width=640,target-densitydpi=device-dpi,user-scalable=no" />
+
+		<script type='text/javascript'>
+			$('body').on('touchmove', function(event) {
+				event.preventDefault();
+			});
+			$('body').on('touchmove touchstart', function(event) {
+				event.preventDefault();
+			});
+			document.addEventListener('touchmove', function(e) {
+				e.preventDefault();
+			});
+		</script>
+		
+		<script src="js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/wechatJSSDK.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/wxShare.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+         <!-- 背景滚动 -->
+         <div id="worldCrystals">
+            <div class="crystal_01"></div>
+            <div class="crystal_02"></div>
+            <div class="crystal_03"></div>    
+        </div>
+        <div id="crystals">
+            <div class="crystal_01"></div>
+            <div class="crystal_02"></div>
+            <div class="crystal_03"></div>    
+        </div>
+                
+		<div id="overflow_hidden" style="background: url(./image/sbg.png) no-repeat;">
+			<div class="p9 pa" id="p9">
+				<div class="pa bor" style=" top: 184px; left: 94px; width: 492px; height: 492px;">
+					<div class="pa zk" style=" width: 506px; height: 506px; "></div>
+					<div class="center" style="display: none;">
+						<img class="animated infinite lrr" src="./image/common/cp1.png"/>
+						<div class="pa hei animated1500 flash_ off"></div>
+					</div>
+				</div>
+				<div class="gblz pa" style="top: 722px;">
+					<img width="111" src="./image/common/gblz.png"/>
+				</div>
+				<div class="pa pt-page-delay2500 animated500 flash_ head center" style=" margin-top: -26px;">
+					<div class="center">
+						<img src="" />
+						<span></span>
+					</div>
+				</div>
+				<img class="p9title pa" style="display: block;" src="./image/common/title.png" />
+				<div class="p9-buttons pa" style=" bottom: initial; top: 1015px;">
+					<div class="p9_b2 pa"></div>
+				</div>
+				<div class="wyylz pa center" style="color: white">
+					我也要录音
+				</div>
+			</div>
+		</div>
+		<div class="pa zk zk1 dn zks"></div>
+		<audio class="dn" id="sound1" src=""></audio>
+
+		<script type="text/javascript">
+			
+			
+			if(isWeiXin()!=true){ 
+				//window.location.href = "http://www.burberryqixi2017.cn/reminder.aspx?utm="
+			} 
+			 
+			function isWeiXin(){
+			var ua = window.navigator.userAgent.toLowerCase(); 
+			if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+				return true; 
+			}else{ 
+				return false; 
+			} 
+			} 
+			
+			
+			function GetQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if(r != null) return unescape(r[2]);
+				return null;
+			}
+			
+			var p;
+			var vipname;
+			if(GetQueryString("id")==null){
+				if(GetQueryString("vip")!=null){
+					p=GetQueryString("vip")
+					var name=GetQueryString("vipname")
+					if(name==1){
+						vipname="吴亦凡"
+					}else if(name==2){
+						vipname="周冬雨"
+					}else if(name==3){
+						vipname="刘昊然"
+					}else if(name==4){
+						vipname="杨祐宁"
+					}else if(name==5){
+						vipname="宋威龙"
+					}else if(name==6){
+						vipname="江疏影"
+					}else if(name==7){
+						vipname="张雪迎"
+					}else if(name==8){
+						vipname="李梦"
+					}else if(name==9){
+						vipname="李淳"
+					}else if(name==10){
+						vipname="包先生"
+					}else if(name==11){
+						vipname="吴岭"
+					}else if(name==12){
+						vipname="黎贝卡"
+					}
+					$("#sound1").attr("src", "yuzhi/" + name +".mp3")
+					$(".head span").html(vipname)
+					$(".head img").attr("src", "yuzhi/" + name +".jpg");
+				}
+				
+				
+			}else{
+				p=GetQueryString("p")
+				getmp3Info();
+			}
+			
+			$("#play .zk").addClass("zk"+p);
+			
+			function getmp3Info() {
+				$.ajax({
+					type: "POST",
+					url: 'GetMInfo.aspx',
+					async: false,
+					data: {
+						"mediaId": GetQueryString("id")
+					},
+					beforeSend: function(xmlHttpRequest) {},
+					success: function(data, textStatus) {
+						if(data.length > 0) {
+							console.log(data)
+							//MP3|头像|昵称
+							$("#sound1").attr("src", "mp3/" + data.split("|")[0])
+							$(".head span").html(data.split("|")[1])
+							$(".head img").attr("src", data.split("|")[2]);
+						}
+					},
+					complete: function(xmlHttpRequest, textStatus) {},
+					error: function() {
+
+					}
+				});
+			}
+
+			var s0 = new Swiper('#gd', {
+				direction: 'vertical',
+				slidesPerView: 'auto',
+				mousewheelControl: true,
+				freeMode: true,
+				roundLengths: true, //防止文字模糊
+				loop: true,
+				loopAdditionalSlides: 2,
+				freeModeMomentumRatio: 0.1,
+			});
+
+			var p9seimg;
+			var p9src = 77
+
+			var aduioend;
+			$(".p9_b2").click(function() {
+				ga('send', 'event', 'share-page', 'click','播放录音');
+				p_=7;
+				if ($(this).hasClass("on")==true){
+					$(".p9_b2").removeClass("on")
+					$("#sound1")[0].pause();
+					clearInterval(aduioend);
+					SW.stop();
+				}else{
+					$("#sound1")[0].play();
+					$(this).addClass("on");
+					aduioend = setInterval(ended, 1000);
+					sonc="rgba(255,255,255,1)";
+					SW = new SiriWave({
+						width: 120,
+						height: 120
+					});
+					SW.setSpeed(0.2);
+					SW.setNoise(0.5);
+					SW.start();
+				}
+			})
+
+			function ended() {
+				if($("#sound1")[0].ended == true) {
+					clearInterval(aduioend);
+					$(".p9_b2").removeClass("on");
+					SW.stop();
+				}
+			}
+
+			$(".wyylz").click(function() {
+				setTimeout(function(){
+					window.location.href = "./1.html"
+				},100)
+				
+			})
+			
+			share();
+			function share(){
+				var slink;
+				var simg;
+				var stitle;
+				var stent;
+				
+				$.ajax({
+					type: 'GET',
+					url: 'http://www.burberryqixi2017.cn/getToken.aspx?callback=?',
+					dataType: 'JSONP',
+					data: {
+						'rurl': window.location.href
+					},
+					success: function(json) {
+						slink="http://www.burberryqixi2017.cn/default.aspx";
+						simg="http://www.burberryqixi2017.cn/img/s.jpg";
+						stitle="Burberry 精灵传递七夕告白";
+						stent="我请神秘信使捎来一段特别的话，想要给你听";
+						
+						wxShare({
+							appid: json.appid,
+							timestamp: json.timestamp,
+							nonceStr: json.nonceStr,
+							signature: json.signature,
+							lineLink: slink,
+							imgUrl: simg,
+							shareTitle: stitle,
+							descContent: stent
+						});
+					},
+					error: function(json) {
+						console.error(json.error);
+					}
+				});
+			}
+		</script>
+		<script src="js/Sonic.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/Loads.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

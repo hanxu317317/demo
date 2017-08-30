@@ -1,0 +1,3903 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+        <title>Burberry</title>
+        <link rel="stylesheet" type="text/css" href="style/style.css?14" />
+        <link rel="stylesheet" type="text/css" href="style/steps.css?12" />
+        <link rel="stylesheet" type="text/css" href="style/self.css" />
+        <link rel="stylesheet" type="text/css" href="style/animate.min.css" />
+        <link rel="stylesheet" type="text/css" href="style/animations.css" />
+        <link rel="stylesheet" type="text/css" href="style/swiper-3.3.1.min.css" />
+        <script src="js/jquery-2.0.3.min.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="js/swiper-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/useraction.js" type="text/javascript" charset="utf-8"></script>
+        
+        <meta name="viewport" content="width=640,target-densitydpi=device-dpi,user-scalable=no" />
+
+        <script type='text/javascript'>
+            $('body').on('touchmove', function(event) {
+                event.preventDefault();
+            });
+            $('body').on('touchmove touchstart', function(event) {
+                event.preventDefault();
+            });
+            document.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+            });
+            var mp3Id;
+        </script>
+        <script src="js/self.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/wechatJSSDK.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/wxShare.js" type="text/javascript" charset="utf-8"></script>
+        
+        <style type="text/css">
+            #gd.swiper-container{ width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; }
+            #gd .swiper-slide{ height: auto; }
+            #bub{ top: 140px; left: 75px; width: 492px; height: 492px; -webkit-transform-origin:top left;}
+            .zhen{ width: 640px; height: 10000px; color: rgba(255,255,255,0);}
+            .sec{width: 100%; height: 100%; top: 0px; left: 0px; z-index: 999999;}
+            .vipme{ top: 0px; left: 0px; width: 100%; height: 100%; z-index: 3; }
+            .p5-button2 .hianb{ height: 180px !important;}
+            .circleProgress {
+                width: 158px;
+                height: 158px;
+                border: 10px solid #656565;
+                border-radius: 100% !important;
+                position: absolute;
+                top: 0;
+                -webkit-transform: rotate(45deg);
+            }
+        </style>
+        
+        <script>
+            // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            // })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            var ga = function() {};
+            ga('create', 'UA-102350624-4', 'auto');
+            ga('send', 'pageview');
+          
+          </script>
+        
+        <script>
+            var canvas = null; //初始化参数
+            var img = null;
+            var ctx = null;
+            var imageReady = false;
+            function loadup(){}
+            //保证只有图像加载后才开始循环动画
+            function loaded() {
+                imageReady = true;
+                update(); //添加3帧每秒间隔计时器
+            }
+
+            function redraw() {
+                ctx.fillStyle = "black";
+                ctx.fillRect(0, 0, 640, 1140);
+                ctx.drawImage(img, 0, 0, 640, 1140);
+            }
+
+            //为了让图片以规定的速度动画，我们必须追踪已经经过的时间，然后根据分配给每帧的时间播放帧。基本步骤是：
+
+            //1、按每秒几帧设置动画速度(msPerFrame)。
+
+            //2、当你循环游戏时，计算一下自最后一帧以后已经经过了多少时间（delta）。
+
+            //3、如果已经经过的时间足够把动画帧播完，那么播放这一帧并设置累积delta为0。
+
+            //4、如果已经经过的时间不够，那么记住（累积）delta时间（acDelta）。
+            var frame = 0;
+            var lastUpdateTime = 0;
+            var acDelta = 0;
+            var msPerFrame = 20;
+            
+            var loadfr;
+
+            function update() {
+                // loadfr=requestAnimFrame(update);
+                // var delta = Date.now() - lastUpdateTime;
+                // //console.log(Date.now(),lastUpdateTime);
+                // if(acDelta > msPerFrame) {
+                //     acDelta = 0;
+                //     redraw();
+                //     img.src = 'http://img.burberryqixi2017.cn/img/load/' + frame + '.jpg';
+                //     frame++;
+                    
+                //     if(frame==55){
+                //         $(".p2").show();
+                //     }
+                //     if(frame == 61){
+                //         console.log(frame)
+                //         s0.unlockSwipeToNext();
+                //         s0.unlockSwipeToPrev();
+                //         s0.slideTo(5, 4000, false);
+                //         $(".qiao").addClass("on")
+                //         cancelAnimationFrame(loadfr);
+                //     }//当绘制后且帧推进完，计时器就会重置。
+                // } else {
+                //     acDelta += delta;
+                // }
+                // lastUpdateTime = Date.now();
+            }
+
+            //requestAnimFrame的作用基本上就是setTimeout，但浏览器知道你正在渲染帧，所以它可以优化绘制循环，以及如何与剩下的页面回流。
+
+            //在某些情况下，setTimeout比requestAnimFrame更好用，特别是对于手机。
+
+            //以下是在不同的浏览器上调用requestAnimFrame的情况也不同，标准的检测方法如下：
+            window.requestAnimFrame = (function() {
+                return window.requestAnimationFrame ||
+                    window.webkitRequestAnimationFrame ||
+                    window.mozRequestAnimationFrame ||
+                    window.oRequestAnimationFrame ||
+                    window.msRequestAnimationFrame ||
+                    function(callback) {
+                        window.setTimeout(callback, 30); //如果requestAnimFrame支持不可用，还是可以用回内置的setTimeout。
+                    };
+            })();
+        </script>
+        
+        <style type="text/css">
+            /* html,body{ margin: 0px; padding: 0px; height: 100%; overflow: hidden; }
+            .qiao{ width: 100%; height: 100%; top: 0px; left: 0px; }
+            .qiao.on{-webkit-animation:qiaoon 1.9s .1s cubic-bezier(0.29, 0.29, 0.57, 0.7) both;}
+            @-webkit-keyframes qiaoon{
+                0%{ -webkit-transform: translateX(0px);}
+                100%{ -webkit-transform: translateX(800px);}
+            } */
+        </style>
+
+
+    </head>
+
+    <body id="">
+        <div id="self-light_wrap" style="width: 100%;height:100%;position: absolute;overflow:hidden">
+            <div class="self-light" id="self-light"></div>
+        </div>
+        <!-- 背景滚动 -->
+        <div id="worldCrystals">
+            <div class="crystal_01"></div>
+            <div class="crystal_02"></div>
+            <div class="crystal_03"></div>    
+        </div>
+        <div id="crystals">
+            <div class="crystal_01"></div>
+            <div class="crystal_02"></div>
+            <div class="crystal_03"></div>    
+        </div>
+              
+        <div id="overflow_hidden">
+            <div class="load pa">
+                <!-- <img class="lti pa" src="http://img.burberryqixi2017.cn/img/ltitle.png"/> -->
+                <div class="lti pa self-text">科技之芯</div>
+                <div class="wrapper" id="cube-wrap">
+                    <div class="cube" id="cube">
+                        <b class="front">
+                            <span class="line1"></span>
+                            <span class="line2"></span>
+                            <span class="line3"></span>
+                            <span class="line4"></span>
+                        </b>
+                        <b class="back">
+                            <span class="line1"></span>
+                            <span class="line2"></span>
+                            <span class="line3"></span>
+                            <span class="line4"></span>
+                        </b>
+                        <b class="top">
+                            <span class="line1"></span>
+                            <span class="line2"></span>
+                            <span class="line3"></span>
+                            <span class="line4"></span>
+                        </b>
+                        <b class="bottom">
+                            <span class="line1"></span>
+                            <span class="line2"></span>
+                            <span class="line3"></span>
+                            <span class="line4"></span>
+                        </b>
+                        <b class="left">
+                            <span class="line1"></span>
+                            <span class="line2"></span>
+                            <span class="line3"></span>
+                            <span class="line4"></span>
+                        </b>
+                        <b class="right">
+                            <span class="line1"></span>
+                            <span class="line2"></span>
+                            <span class="line3"></span>
+                            <span class="line4"></span>
+                        </b>
+                        <i class="left">
+                            <div class="g5">
+                                <img src="./image/5g.png" ></img>
+                            </div>
+                        </i>
+                    </div>
+                </div>
+                   
+                <div class="loady"></div>
+                    <div class="lotext pa center neonBlue">
+                        <span class="miao0"></span>
+                        <span class="miao1"></span>
+                        <span class="miao2"></span>
+                        <span class="miao3 bf"></span>
+                    </div>
+                
+                <div class="xia pa">
+                    <div class="loEx pa dn">
+                        <p class="self-intro pt-page-delay800 animated1500 flash_" style="margin-top: 31px; font-size: 24px; -webkit-transform:scale(0.8);">
+                                在宇宙深处 <br />
+                                有一个神秘的能量晶体 <br />
+                                他们有巨大的能量，维持着宇宙运转 <br />
+                                在晶体周围 <br />
+                                有5个小行星环绕守护 <br />
+                                他们被称作5G星球 <br />                           
+                        </p>
+                        <p class="self-intro pt-page-delay4000 animated1500 flash_" style="font-size: 24px; -webkit-transform:scale(0.8);">
+                                突然有一天....                                
+                        </p>
+                        <p class="self-intro  pt-page-delay6000 animated1500 flash_" style="font-size: 24px; -webkit-transform:scale(0.8);">
+                                宇宙暗黑粒子发生爆炸 <br />
+                                产生黑洞 <br />
+                                黑洞吞噬了晶体的能量与守护行星 <br />
+                                现在需要勇士们用声音 <br />
+                                将它们从黑暗中唤醒 <br />
+                                重新运行 <br />
+                        </p>
+                    </div>
+                    <div class="explore pa center color__sliver pt-page-delay500 animated1500 flash_" style="display: none;">
+                        开始体验
+                    </div>
+                    <div class="ment pa f20 center pt-page-delay1000 animated1500 flash_" style="display: none;">
+                        声明条款
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pf hdtk dn" id="hdtk">
+                <div class="center h100">
+                    <div class="hdwb">
+                        <div class="hdt pr">
+                            活动条款
+                            <div class="pa smg"></div>
+                        </div>
+                        <div class="hdnr">
+                            this is intro
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="pa qiao">
+                <canvas id="animation_canvas"></canvas>
+            </div> -->
+            <div class="swiper-container" id="gd" style="opacity: 0;">
+                <div class="slt pa dn">
+                    <span class="pa" style="left: 81px;"></span>
+                </div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide pr" style="color: #fff; width: 530px;">
+                        <div class="pa bor c4" style="width: 250px; height: 250px; top: -70px; left: -57px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style="-webkit-animation: clockwise 3s linear infinite;transform-origin: 120px 120px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="width: 247px;height: 247px;top: -9px;left: 151px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 113px 113px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="width: 189px;height: 189px;top: 240px;left: 53px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style="-webkit-animation: clockwis 5s linear infinite;transform-origin: 84px 84px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="    width: 360px;height: 360px;top: 680px;left: 410px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.50">
+                                    <div style=" -webkit-animation: clockwis 3s linear infinite;transform-origin: 175px 175px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 3s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="    width: 184px; height: 184px;top: 506px; left: 82px">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.40">
+                                    <div style=" -webkit-animation: clockwise 5s linear infinite;transform-origin: 82px 82px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c2" style="width: 250px; height: 250px; top: 614px; left: -57px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style="-webkit-animation: clockwise 3s linear infinite;transform-origin: 120px 120px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pa bor c2" style="width: 320px;height: 320px;top: 320px;left: 276px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style="-webkit-animation: clockwise 3s linear infinite;transform-origin: 155px 155px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="    width: 155px;height: 155px;top: 889px; left: 297px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style="-webkit-animation: clockwis 5s linear infinite;transform-origin:72px 72px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="width: 70px;height: 70px;top: 940px;left: 131px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style="-webkit-animation: clockwise 3s linear infinite;transform-origin: 30px 30px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhen" style="">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>
+                    <div class="swiper-slide pr" style="color: #fff; width: 640px;">
+                        <div class="pa bor c5" style="width: 283px;height: 283px;top: -47px;left: 59px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style=" -webkit-animation: clockwis 4s linear infinite;transform-origin: 135px 135px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c3" style="width: 100px;height: 100px;top: 117px;left: -13px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style="-webkit-animation: clockwise 4s linear infinite;transform-origin: 45px 45px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="    width: 117px; height: 117px; top: 123px; left: 359px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.50">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 58px 58px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="pa bor c6" style="    width: 259px; height: 259px;top: 210px;left: 381px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 123px 123px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="    width: 217px; height: 217px;top: 332px; left: 136px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style=" -webkit-animation: clockwise 3s linear infinite;transform-origin: 104px 104px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="    width: 151px;height: 151px;top: 499px;left: 433px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style=" -webkit-animation: clockwis 4s linear infinite;transform-origin: 70px 70px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="    width: 247px;height: 247px;top: 571px;left: 262px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 113px 113px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="    width: 283px;height: 283px;top: 761px; left: 459px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style=" -webkit-animation: clockwis 4s linear infinite;transform-origin: 135px 135px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="    width: 217px;height: 217px; top: 950px;left: 234px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style=" -webkit-animation: clockwise 3s linear infinite;transform-origin: 104px 104px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhen" style="">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>
+                    <div class="swiper-slide pr" style="color: #fff; width: 640px;">
+                        <div class="pa bor c1" style="width: 207px;height: 207px;top: -51px;left: 106px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.50">
+                                    <div style=" -webkit-animation: clockwise 3s linear infinite;transform-origin: 95px 95px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style=" width: 156px;height: 156px;top: -10px;left: 510px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 73px 73px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="width: 265px; height: 265px; top: 224px;left: 339px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 128px 128px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c2" style="    width: 265px; height: 265px;top: 300px; left: 53px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 128px 128px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c3" style="    width: 94px; height: 94px;top: 257px; left: 33px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 37px 37px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="    width: 150px; height: 150px;top: 600px; left: 207px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 70px 70px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="  width: 360px; height: 360px; top: 600px;left: 328px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 175px 175px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="    width: 265px;height: 265px;top: 944px;left: 141px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 128px 128px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhen" style="">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>
+                    <div class="swiper-slide pr" style="color: #fff; width: 500px;">
+                        <div class="pa bor c1" style="width: 190px;height: 190px;top: 542px;left: 98px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style="-webkit-animation: clockwise 5s linear infinite;transform-origin: 85px 85px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="width: 180px;height: 180px;top: 820px;left: 172px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style="-webkit-animation: clockwis 4s linear infinite;transform-origin: 80px 80px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="width: 198px;height: 198px;top: 233px;left: 37px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.60">
+                                    <div style="-webkit-animation: clockwise 3s linear infinite;transform-origin: 89px 89px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="width: 207px;height: 207px;top: 251px;left: 294px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.50">
+                                    <div style="-webkit-animation: clockwis 5s linear infinite;transform-origin: 100px 100px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="width: 197px;height: 197px;top: 613px;left: 329px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.40">
+                                    <div style="-webkit-animation: clockwise 4s linear infinite;transform-origin: 95px 95px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="width: 212px;height: 212px;top: 15px;left: 340px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style="-webkit-animation: clockwis 3s linear infinite;transform-origin: 96px 96px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhen" style="">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>
+                    <div class="swiper-slide pr" style="color: #fff; width: 740px;">
+                        <div class="pa bor c2" style="width: 247px;height: 247px;top: -127px;left: 45px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 118px 118px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="width: 270px;height: 270px;top: -46px;left: 451px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 130px 130px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="width: 145px;height: 145px;top: -46px;left: 357px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.50">
+                                    <div style=" -webkit-animation: clockwis 3s linear infinite;transform-origin: 67px 67px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="width: 275px;height: 275px;top: 300px;left: 490px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.40">
+                                    <div style=" -webkit-animation: clockwise 5s linear infinite;transform-origin: 132px 132px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="width: 300px;height: 300px;top: 867px;left: 298px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style="-webkit-animation: clockwis 4s linear infinite;transform-origin: 145px 145px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pa bor c4" style="width: 265px;height: 265px;top: 505px;left: 39px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style="-webkit-animation: clockwise 3s linear infinite;transform-origin: 127px 127px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="width: 250px;height: 250px;top: 215px;left: 173px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style="-webkit-animation: clockwis 5s linear infinite;transform-origin: 120px 120px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="width: 155px;height: 155px;top: 541px;left: 350px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style="-webkit-animation: clockwis 5s linear infinite;transform-origin: 72px 72px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="width: 155px;height: 155px;top: 725px;left: 160px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style="-webkit-animation: clockwis 5s linear infinite;transform-origin: 72px 72px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style=" width: 230px;height: 230px;top: 745px;left: 494px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style="-webkit-animation: clockwise 4s linear infinite;transform-origin: 110px 110px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c2" style="width: 230px;height: 230px;top: 885px;left: -51px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style="-webkit-animation: clockwis 4s linear infinite;transform-origin: 120px 120px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhen" style="">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>
+                    <div class="swiper-slide pr" style="color: #fff; width: 506px;">
+                        <div class="pa bor c2" style="width: 247px;height: 247px;top: -156px;left: -50px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.50">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 118px 118px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c3" style="width: 100px;height: 100px;top: -33px;left: 144px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.50">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 45px 45px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="width: 290px;height: 290px;top: 298px;left: 177px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.40">
+                                    <div style="-webkit-animation: clockwis 3s linear infinite;transform-origin: 140px 140px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 3s linear infinite;"><div class="vipme pa h100 center1">吴亦凡</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c2" style="width: 280px;height: 280px;top: -36px;left: 425px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style=" -webkit-animation: clockwise 5s linear infinite;transform-origin: 135px 135px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 5s linear infinite;"><div class="vipme pa h100 center1">江疏影</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="width: 265px;height: 265px;top: 120px;left: -40px; ">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style="-webkit-animation: clockwis 4s linear infinite;transform-origin: 127px 127px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"><div class="vipme pa h100 center1">宋威龙</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="width: 55px;height: 55px;top: 490px;left: 50px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style=" -webkit-animation: clockwise 3s linear infinite;transform-origin: 22px 22px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="width: 257px;height: 257px;top: 579px;left: 64px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style=" -webkit-animation: clockwise 3s linear infinite;transform-origin: 123px 123px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"><div class="vipme pa h100 center1">周冬雨</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c3" style="width: 100px;height: 100px;top: 875px;left: 140px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 45px 45px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="width: 250px;height: 250px;top: 902px;left: -40px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 5s linear infinite;transform-origin: 120px 120px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c3" style="width: 100px;height: 100px;top: 842px;left: 410px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 45px 45px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhen" style="">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>
+                    <div class="swiper-slide pr" style="color: #fff; width: 850px;">
+                        <div class="pa bor c6" style="width: 60px;height: 60px;top: -20px;left: 440px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 5s linear infinite;transform-origin: 25px 25px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pa bor c5" style="width: 278px;height: 278px;top: 35px;left: 250px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 134px 134px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"><div class="vipme pa h100 center1">包先生</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pa bor c5" style="width: 278px;height: 278px;top: 280px;left:-70px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 3s linear infinite;transform-origin: 134px 134px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"><div class="vipme pa h100 center1">刘昊然</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <div class="pa bor c4" style="width: 265px;height: 265px;top: 450px;left: 220px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 4s linear infinite;transform-origin: 127px 127px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"><div class="vipme pa h100 center1">张雪迎</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pa bor c1" style="width: 130px;height: 130px;top: 350px;left: 250px; ">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 2s linear infinite;transform-origin: 60px 60px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 2s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pa bor c2" style="width: 265px;height: 265px;top: 280px;left: 480px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 4s linear infinite;transform-origin: 127px 127px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"><div class="vipme pa h100 center1">李梦</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pa bor c2" style="width: 265px;height: 265px;top: 630px;left:-130px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 5s linear infinite;transform-origin: 127px 127px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 5s linear infinite;"><div class="vipme pa h100 center1">杨祐宁</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="width: 280px;height: 280px;top: 810px;left:220px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 3s linear infinite;transform-origin: 135px 135px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 3s linear infinite;"><div class="vipme pa h100 center1">李淳</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="pa bor c4" style="width: 265px;height: 265px;top: 0px;left: 580px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 3s linear infinite;transform-origin: 127px 127px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"><div class="vipme pa h100 center1">吴岭</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="pa bor c3" style="width: 265px;height: 265px;top: 620px;left: 534px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 127px 127px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"><div class="vipme pa h100 center1">黎贝卡</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="pa bor c3" style="width: 100px;height: 100px;top: 505px;left: 695px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 45px 45px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c2" style="width: 100px;height: 100px;top: 903px;left: 734px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 3s linear infinite;transform-origin: 45px 45px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhen" style="">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>              
+                    <div class="swiper-slide pr" style="color: #fff; width: 640px;">
+                        <div style=" width: 640px; height: 1140px; position: absolute; top: -90px; left: 0px; background: rgba(0,0,0,0);">
+                            <canvas id="cloadimg" width="640" height="1140"></canvas>
+                        </div>
+                            
+                        <!--加载-->
+                        <!--<div id="loimg" class="loadimgdh dn" style="width: 100%; height: 1200px;"></div>-->
+                        <div class="zhen">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>
+                    <div class="swiper-slide pr" style="color: #fff; width: 530px; margin-left: -20px;">
+                        <div class="pa bor c1" style="width: 247px;height: 247px;top: -9px;left: 151px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 113px 113px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="width: 189px;height: 189px;top: 240px;left: 53px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style="-webkit-animation: clockwis 5s linear infinite;transform-origin: 84px 84px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="    width: 360px;height: 360px;top: 680px;left: 410px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.50">
+                                    <div style=" -webkit-animation: clockwis 3s linear infinite;transform-origin: 175px 175px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 3s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="    width: 184px; height: 184px;top: 506px; left: 82px">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.40">
+                                    <div style=" -webkit-animation: clockwise 5s linear infinite;transform-origin: 82px 82px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="pa bor c2" style="width: 250px; height: 250px; top: 614px; left: -57px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style="-webkit-animation: clockwise 3s linear infinite;transform-origin: 120px 120px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        
+                        <div class="pa bor c2" style="width: 320px;height: 320px;top: 320px;left: 276px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style="-webkit-animation: clockwise 3s linear infinite;transform-origin: 155px 155px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="    width: 155px;height: 155px;top: 889px; left: 297px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style="-webkit-animation: clockwis 5s linear infinite;transform-origin:72px 72px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="width: 70px;height: 70px;top: 940px;left: 131px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style="-webkit-animation: clockwise 3s linear infinite;transform-origin: 30px 30px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhen" style="">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>
+                    <div class="swiper-slide pr" style="color: #fff; width: 640px;">
+                        <div class="pa bor c5" style="width: 283px;height: 283px;top: -47px;left: 59px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style=" -webkit-animation: clockwis 4s linear infinite;transform-origin: 135px 135px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c3" style="width: 100px;height: 100px;top: 117px;left: -13px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style="-webkit-animation: clockwise 4s linear infinite;transform-origin: 45px 45px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="    width: 117px; height: 117px; top: 123px; left: 359px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.50">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 58px 58px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="pa bor c6" style="    width: 259px; height: 259px;top: 210px;left: 381px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 123px 123px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="    width: 217px; height: 217px;top: 332px; left: 136px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style=" -webkit-animation: clockwise 3s linear infinite;transform-origin: 104px 104px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="    width: 151px;height: 151px;top: 499px;left: 433px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style=" -webkit-animation: clockwis 4s linear infinite;transform-origin: 70px 70px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="    width: 247px;height: 247px;top: 571px;left: 262px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 113px 113px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="    width: 283px;height: 283px;top: 761px; left: 459px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style=" -webkit-animation: clockwis 4s linear infinite;transform-origin: 135px 135px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="    width: 217px;height: 217px; top: 950px;left: 234px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style=" -webkit-animation: clockwise 3s linear infinite;transform-origin: 104px 104px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhen" style="">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>
+                    <div class="swiper-slide pr" style="color: #fff; width: 640px;">
+                        <div class="pa bor c1" style="width: 207px;height: 207px;top: -51px;left: 106px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.50">
+                                    <div style=" -webkit-animation: clockwise 3s linear infinite;transform-origin: 95px 95px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style=" width: 156px;height: 156px;top: -10px;left: 510px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 73px 73px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="width: 265px; height: 265px; top: 224px;left: 339px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 128px 128px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c2" style="    width: 265px; height: 265px;top: 300px; left: 53px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 128px 128px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c3" style="    width: 94px; height: 94px;top: 257px; left: 33px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 37px 37px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="    width: 150px; height: 150px;top: 600px; left: 207px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 70px 70px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="  width: 360px; height: 360px; top: 600px;left: 328px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 175px 175px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="    width: 265px;height: 265px;top: 944px;left: 141px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwis 5s linear infinite;transform-origin: 128px 128px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhen" style="">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>
+                    <div class="swiper-slide pr" style="color: #fff; width: 500px;">
+                        <div class="pa bor c1" style="width: 190px;height: 190px;top: 542px;left: 98px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style="-webkit-animation: clockwise 5s linear infinite;transform-origin: 85px 85px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="width: 180px;height: 180px;top: 820px;left: 172px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style="-webkit-animation: clockwis 4s linear infinite;transform-origin: 80px 80px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="width: 198px;height: 198px;top: 233px;left: 37px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.60">
+                                    <div style="-webkit-animation: clockwise 3s linear infinite;transform-origin: 89px 89px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="width: 207px;height: 207px;top: 251px;left: 294px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.50">
+                                    <div style="-webkit-animation: clockwis 5s linear infinite;transform-origin: 100px 100px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="width: 197px;height: 197px;top: 613px;left: 329px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.40">
+                                    <div style="-webkit-animation: clockwise 4s linear infinite;transform-origin: 95px 95px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"><span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="width: 212px;height: 212px;top: 15px;left: 340px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style="-webkit-animation: clockwis 3s linear infinite;transform-origin: 96px 96px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhen" style="">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>
+                    <div class="swiper-slide pr" style="color: #fff; width: 640px;">
+                        <div class="pa bor c2" style="width: 247px;height: 247px;top: -127px;left: 45px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 118px 118px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style="width: 270px;height: 270px;top: -46px;left: 451px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style=" -webkit-animation: clockwise 4s linear infinite;transform-origin: 130px 130px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="width: 145px;height: 145px;top: -46px;left: 357px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.50">
+                                    <div style=" -webkit-animation: clockwis 3s linear infinite;transform-origin: 67px 67px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c5" style="width: 275px;height: 275px;top: 300px;left: 490px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.40">
+                                    <div style=" -webkit-animation: clockwise 5s linear infinite;transform-origin: 132px 132px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c1" style="width: 300px;height: 300px;top: 867px;left: 298px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style="-webkit-animation: clockwis 4s linear infinite;transform-origin: 145px 145px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pa bor c4" style="width: 265px;height: 265px;top: 505px;left: 39px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.20">
+                                    <div style="-webkit-animation: clockwise 3s linear infinite;transform-origin: 127px 127px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 3s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="width: 250px;height: 250px;top: 215px;left: 173px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style="-webkit-animation: clockwis 5s linear infinite;transform-origin: 120px 120px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="width: 155px;height: 155px;top: 523px;left: 600px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style="-webkit-animation: clockwis 5s linear infinite;transform-origin: 72px 72px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c6" style="width: 155px;height: 155px;top: 725px;left: 160px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.10">
+                                    <div style="-webkit-animation: clockwis 5s linear infinite;transform-origin: 72px 72px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 5s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c4" style=" width: 230px;height: 230px;top: 745px;left: 494px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style="-webkit-animation: clockwise 4s linear infinite;transform-origin: 110px 110px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwise 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pa bor c2" style="width: 230px;height: 230px;top: 885px;left: -51px;">
+                            <div class="allxy">
+                                <div class="layer" data-depth="0.30">
+                                    <div style="-webkit-animation: clockwis 4s linear infinite;transform-origin: 120px 120px;">
+                                        <div class="center" style="-webkit-animation: counter-clockwis 4s linear infinite;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zhen" style="">0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 玩法介绍 -->
+            <div class="p2 animated fadeInRight dn"><!--fadeInoutRight-->
+                <div class="pa p2c"></div>
+                <div class="pa p2d"></div>
+                <img src="./image/common/p2-popup.png"/>
+            </div>
+            <!-- 玩法介绍 end -->
+            <style type="text/css">
+                /* 查找按钮 */
+                .p2s{ background: url(./image/common/button/find-button.png) no-repeat; background-size:100% ; width: 100px; height: 100px; z-index: 12; bottom: 133px; left: 86px; }
+                .p2ss{ background: url(./image/common/button/find-button.png) no-repeat; background-size:100% ; width: 100px; height: 100px; z-index: 12; bottom: 133px; left: 86px; }
+                .xzsy{ bottom: 35px; left: 76px; font-size: 20px; z-index: 8;}
+            </style>
+            <!-- todo php 模板渲染的时候,如果当前用户没有我的声音, 不渲染 -->
+            <div class="p2s dn pa rl" style=""></div>
+            <div class="p2ss dn pa rl"></div>
+            <div class="xzsy pa dn" style="colow: white;">寻找我的声音</div>
+            
+            <div class="play pa dn" id="play">
+                <div id="bub" class="">
+                    <div class="centers h100 ball-rotate">
+                        <img class="animated infinite lrr " src="" style=" margin-left: 15px; margin-top: 39px; display: none;" />
+                    </div>
+                </div>
+                <div class="play_fun" style="display: none;">
+                    <div class="Close pa" style="z-index: 99;"></div>
+                    <div class="gblz pa">
+                        <img width="111" src="../image/common/gblz.png" />
+                    </div>
+                    <div class="pa pt-page-delay1500 animated500 flash_  head center" style="top: 683px;">
+                        <div class="center">
+                            <img src="" />
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="pa play_an">
+                        <!-- <div class="play_an1 pa"></div> -->
+                        <div class="play_an2 pa center"></div>
+                        <div class="play_an2s pa dn center"></div>
+                        <div class="play_an3 pa"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p3 dn">
+                <div style=" position: absolute; width: 179px; height: 179px; top: -208px; left: 229px;">
+                    <div class="hianb pa"></div>
+                    <div class="hian pa"></div>
+                </div>
+                <div class="p3_text animated flash_ pa f20" style="color: white;">录制我的5G声音</div>
+            </div>
+            <div class="b255 dn"></div>
+            <div class="p4 dn animated flash_">
+                <div class="pa p4bz center">
+                    <span class="miao1"></span>
+                    <span class="fen"></span>
+                    <span class="miao2"></span>
+                </div>
+                <div class="pa lzgb dn">
+                    <img style="width: 172px;" src="../image/common/lzgb.png"/>
+                </div>
+                <div class="swiper-container">
+                    <div class="xzts pa center">
+                        选择你的logo
+                    </div>
+                    <div id="cpt1" class="jltxt pa f20">高颜帅萌的猫头鹰</div>
+                    <div id="cpt2" class="jltxt pa f20 dn">热恋中的小蝴蝶</div>
+                    <div id="cpt3" class="jltxt pa f20 dn">等待爱情的鱼儿</div>
+                    <div id="cpt4" class="jltxt pa f20 dn">呆萌可爱的猫头鹰</div>
+                    <div id="cpt5" class="jltxt pa f20 dn">无事献殷勤的猫头鹰</div>
+                    <div id="cpt6" class="jltxt pa f20 dn">为爱奔跑的公牛</div>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="x1"></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="x2"></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="x3"></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="x4"></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="x5"></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="x6"></div>
+                        </div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                
+                <div class="pa p4_tick">
+                    <!-- 返回上一步的按钮 -->
+                    <div class="p4-button pa rl"></div>
+                    <!-- 下一步的按钮 -->
+                    <div class="p4_div pa"></div>
+                </div>
+                <div class="pa p5-ly dn">
+                    <!-- 返回上一步的按钮 -->
+                    <div class="p5-button pa rl"></div>
+                    <div class="p5-text pa animated500 flash_ f20">长按录制爱的告白</div>
+                    <!-- 请求录音的真实按钮 -->
+                    <div class="p5-button2 pa" id="p5-button2">
+                        <div class="circleProgress_wrapper dn pa">
+                            <div class="wrapper right">
+                                <div class="circleProgress rightcircle"></div>
+                            </div>
+                            <div class="wrapper left">
+                                <div class="circleProgress leftcircle"></div>
+                            </div>
+                        </div>
+                        <div style=" position: absolute;    width: 179px; height: 179px; top: -208px; left: 229px;">
+                            <div class="hianb pa"></div>
+                            <div class="hian pa"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p6 pa dn">
+                    <div class="p6-back pa rl"></div>
+                    <div class="play_an4 pa center"></div>
+                    <div class="play_an4s pa dn center"></div>
+                    <div class="p6-confirm pa lr"></div>
+                    <div class="p6text pa f20">听一听我的录音</div>
+                </div>
+            </div>
+            <div id="suo">
+                <div class="centers">
+                    <canvas id="cpackage" class="pa" style="top: 0px; left: 0px; top: -111px; left: -66px; width: 777px;" width="640" height="1140"></canvas>
+                    
+                    <div class="suocl pa bor c1">
+                        <div class="center">
+                            <i class="pa suoi"></i>
+                            <i class="pa suoz animated flash_"></i>
+                            <i class="pa suos animated flash_"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p9 pa dn" id="p9">
+               <div class="fxgb pa">
+                    <!-- 传递告白给他 -->
+                    <img width="192" src="../image/common/fxgb.png"/>
+                </div>
+                <div class="Close pa" style="top: 168px; z-index: 999;"></div>
+                <div id="p9cp" class="" style="">
+                    <!--<div class="pa zk" style=" width: 103%; height: 103%; "></div>-->
+                    <div class="center h100">
+                        <img class="animated infinite lrr" src="../image/common/cp6.png"/>
+                        <!--<div class="pa hei animated1500 flash_ off dn"></div>-->
+                    </div>
+                </div>
+                <div class="gblz pa">
+                    <img width="111" src="../image/common/gblz.png"/>
+                </div>
+                <div class="pa pt-page-delay1500 animated500 flash_ head center" style="top: 686px;">
+                    <div class="center">
+                        <img src=""/>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="pa play_an" >
+                    <div class="play_an3ss pa center"></div>
+                    <div class="play_an3s pa dn center"></div>
+                    <div class="play_an3 pa lr"></div>
+                </div>
+            </div>
+            <div id="wwtz" class="pa animated fadeInRight dn">
+                <div class="center h100">
+                    <div class="wwtz pr">
+                        <div class="wwgb pa"></div>
+                        <div class="lj1 pa"></div>
+                        <div class="lj2 pa"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="sfyy" class="pa animated fadeInRight dn">
+                <div class="center h100">
+                    <div class="sfyy pr">
+                        <div class="sfon1 pa" onclick="sf(1)"></div>
+                        <div class="sfon2 pa" onclick="sf(2)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <audio class="dn" id="sound1" src=""></audio>
+        <div class="dn loadimg"></div>
+        <!--<div class="dn zk1 zks"></div>
+        <div class="dn loadimgdh"></div>-->
+        <div class="dn loadgif"></div>
+        <div class="dn">
+            <div class="swiper-slide-active">
+                <div class="x2"></div>
+            </div>
+        </div>
+        <!-- <div class="sec pa dn"></div> -->
+        <style type="text/css">
+            .lock_wrp{position:absolute; display:none; width:100%; height:100%; overflow:hidden; left:0; top:0; background-color:#000; color:rgba(255,255,255,.8); z-index:9999;}
+            .lock{position:absolute; left:50%; top:50%; width:287px; height:150px; margin:-75px 0 0 -125px; text-align:center;}
+            .lock i{position:relative; display:block; width:74px; height:110px; background:url(./image/common/iphone.png) 0 0 no-repeat; background-size:100%; margin:0 auto; -webkit-transform:rotate(-90deg); -moz-transform:rotate(-90deg); -o-transform:rotate(-90deg); -ms-transform:rotate(-90deg); transform:rotate(-90deg); -webkit-animation:iphone 1.6s ease-in infinite; -moz-animation:iphone 1.6s ease-in infinite; -o-animation:iphone 1.6s ease-in infinite; -ms-animation:iphone 1.6s ease-in infinite; animation:iphone 1.6s ease-in infinite;}
+            @-webkit-keyframes iphone{0%{-webkit-transform:rotate(-90deg);}25%{-webkit-transform:rotate(0deg);}50%{-webkit-transform:rotate(0deg);}75%{-webkit-transform:rotate(-90deg);}100%{-webkit-transform:rotate(-90deg);}}       
+        </style>
+        <div class="lock_wrp f20" id="lock">
+            <div class="lock"> <i></i><br />为了更好的体验,请使用竖屏浏览 
+        </div>
+        
+        <script type="text/javascript">
+            // php 需要在这里输出微信用户的名称
+            var nickname='韩旭';
+            // php 换成用户的头像
+            var headpic = 'http://wx.qlogo.cn/mmopen/9icoicibLrDDl5HfxeyxKeocGZufur1pVPkD4aGRrhlWUQWJqShWx4Z9OPcKVAJkReeD78xN2uhiaic10upTWjXPLYw/0';
+            
+            var fileName = 'info_201708252237455901657.mp3';
+            // php 这里可以存起来,或者随机[1-6]代表不同的颜色
+            var filecolors = '1';
+            var userStr = 'ZacykbaW/o9PKPLDR2FmvwH8VIq8FDx/CJJIU4pAAcezFC9A7HA6EiA6OM/M0BxiuD2PKaMcChcV00omb7m1BAmzMNTOehYecRWAO4ggNqIrxCW8VI7E6nJCZV/9SJatYvKmxo1kxtxNSVzyOS5oDpGGqcjSY8eTESQbVeA5ZAoYCAtowfBDYwDdK8pPH0GJKsRkJx0m54EdtFbF1aQJtmWydRyvxi uACHCFJUnJtEUW5f5hNzT10OpijXXQ/2C/d S2IVz03XJ5Ki3czf/U9evAfQ2E2EtJWUAwraj6aPrpKSWDeWzEyUDdmEhhotZ/aOyK7qzWuKHnv9TydHXNuseiBdGkq0DHaGo28 0o/h60FkFcz/0K60qauVBsoZbaBKAWUnOZ9HTpMTnu JLL2HDSz5RZfYmeWvt9gf9tX78biX oRlKXAwQqe1/CgrySaydx6poUPLoWIaoxjyPNZCrKFDXKwbGsQEDU43XnsUlBV/bbkKWEXJX0ubDMHyN I3l b6stwzg2dI/ BJl2w==';
+            var y=0;
+            var y_=0;
+            var up;
+            var don=1;
+            
+            
+            var i = 1
+            var u=1;
+            var cpnum=1
+            
+            var cpdj=1;
+            
+            var sh=1;
+
+            var sjks = 1;
+
+            var msid = "";
+            var ylsy=1;
+            var ylss="";
+            
+            
+            var dyc=1;
+            var dec=1;
+            
+            var decl=1;
+            
+            // pageStopTime("首页",true,userStr)//开始页
+            
+            if (fileName.length > 0) {
+                dec=2;
+                ylsy=2;
+                // 查找我的声音
+                $(".p2s").click(function() {
+                    // ga('send', 'event', 'qiao-page', 'click','查找我的声音');
+                    // second();
+                    borplay();
+                    $("#play").show();
+                    $("#bub").attr("style", swfd).attr("class","pa bor c"+filecolors)
+                    swfds = "-webkit-transition: all 1000ms;  -webkit-transform: translate(740px,340px) scale(0);";
+                    $("#bub").attr("style", "-webkit-transition: all 1ms;  -webkit-transform: translate(740px,340px) scale(0);")
+                    if(fileName.indexOf(".mp3") >= 0){
+                        $("#sound1").attr("src","mp3/" + fileName)
+                        $(this).addClass("ass")
+                    }else{
+                        $(this).addClass("as")
+                    }
+                    $(".play_an1").attr("style","")
+                    $("#play .head span").html(nickname)
+                    $("#play .head img").attr("src",headpic);
+                    setTimeout(function() {
+                        $(".b255").fadeIn();
+                        $("#bub").attr("style", "-webkit-transition: all 1000ms;  -webkit-transform: translate(1px,1px) scale(1);")
+                    }, 10)
+                    
+                        $(".p3").hide();
+                        $(".p2s").hide();
+                        
+                        $("#bub .centers img").attr("src", "../image/common/cp" + filecolors + ".png");
+    
+                        $(".play_an2").show().removeClass("on");
+                        $(".play_an2s").hide().removeClass("on");
+                        $(".play_an3").removeClass("on");
+                        
+                        
+                        setTimeout(function() {
+                            $(".play_fun").fadeIn();
+                        }, 1000)
+                        setTimeout(function(){
+                            $("#play .lrr").fadeIn();
+                        },500)
+                    
+                })
+            }
+            
+            $(".p2ss").click(function(){
+                second();
+                $(".xzsy").fadeOut();
+                $(this).addClass("as")
+                $(".play_an1").attr("style","")
+                
+                borplay();
+                    $("#play").show();
+                    $("#bub").attr("style", swfd).attr("class","pa bor c"+swp)
+                    swfds = "-webkit-transition: all 1000ms;  -webkit-transform: translate(740px,340px) scale(0);";
+                    $("#bub").attr("style", "-webkit-transition: all 1ms;  -webkit-transform: translate(740px,340px) scale(0);")
+                    
+                    ylss=2;
+                    
+                    $("#play .head span").html(nickname)
+                    $("#play .head img").attr("src",headpic);
+                    setTimeout(function() {
+                        $(".b255").fadeIn();
+                        $("#bub").attr("style", "-webkit-transition: all 1000ms;  -webkit-transform: translate(1px,1px) scale(1);")
+                    }, 10)
+                    
+                        $(".p3").fadeOut();
+                        $(".p2ss").fadeOut();
+                        
+                        $("#bub .centers img").attr("src", "img/cp" + swp + ".png");
+    
+                        $(".play_an2").show().removeClass("on");
+                        $(".play_an2s").hide().removeClass("on");
+                        // $(".play_an3").removeClass("on");
+                        
+                        
+                        setTimeout(function() {
+                            $(".play_fun").fadeIn();
+                        }, 1000)
+                        setTimeout(function(){
+                            $("#play .lrr").fadeIn();
+                        },500)
+                    
+                })
+            
+            var dqym=0;
+            
+            var swiper = new Swiper('.p4 .swiper-container', {
+                nextButton: '.p4 .swiper-button-next',
+                prevButton: '.p4 .swiper-button-prev',
+                pagination: '.p4 .swiper-pagination',
+                paginationClickable: true,
+                loop : true,
+                onSlideChangeStart: function(swiper){
+                    dqym=swiper.activeIndex
+                },
+                onSlideChangeEnd: function(swiper){
+                
+                    $(".jltxt").hide();
+                    
+                    var p4s=swiper.activeIndex
+                    if(p4s=="0"){
+                        p4s="6"
+                    }else if(p4s=="7"){
+                        p4s="1"
+                    }
+                    $("#cpt"+p4s).fadeIn();
+                    //cpxl(p4s)
+                }
+            });
+            
+            
+            var s0 = new Swiper('#gd', {
+                slidesPerView: 'auto',
+                mousewheelControl: true,
+                freeMode: true,
+                roundLengths : true, //防止文字模糊
+                //loop : true,
+                //loopAdditionalSlides : 2,
+                freeModeMomentumRatio : 0.2,
+                onTouchStart: function(s0,even){
+                    // $(".slt").show();
+                },
+                onTouchMove: function(s0){
+                    var sox=s0.getWrapperTranslate()
+                    console.log(parseInt(sox/6696*-100)*16)
+                    $(".slt span").css("left",parseInt(sox/6696*-100)*1.5+"px")
+                },
+                onTouchEnd: function(s0){
+                    $(".slt").hide();
+                }
+            });
+            s0.slideTo(7, 1, false);
+            s0.lockSwipeToNext();
+            s0.lockSwipeToPrev();
+            
+            var ksdj=1;
+            var p2img=1;
+            $(".p2c,.p2d").click(function(){
+                second();
+                ga('send', 'event', 'qiao-page', 'click','试听引导按钮');
+                p2img=2;
+                remp2();
+                
+            })
+            
+            function remp2(){
+                if(ylsy==2){
+                    $(".p2s").show();
+                }
+                $(".p3").show();
+                $(".p2").removeClass("fadeInRight").addClass("fadeInoutRight")
+                setTimeout(function(){
+                    ksdj=2;
+                    $(".p2").hide();
+                },1000);
+            }
+            
+            $(".ment").click(function(){
+                second();
+                pageStopTime("首页",false,userStr);
+                pageStopTime("条款",true,userStr);
+                $("#hdtk").show();
+            })
+            
+            $(".smg").click(function(){
+
+                pageStopTime("条款",false,userStr);
+                pageStopTime("首页",true,userStr);
+                $("#hdtk").hide();
+            })
+            
+            $(".p4_div").click(function(){
+                
+                $(".p5-button").show();
+                
+                second();
+                
+                $(".p4_tick").fadeOut();
+                //$(".p4bz").html("2/2")
+                formatSeconds(22)
+                if(swiper.activeIndex=="0"){
+                    swp=6;
+                }else if(swiper.activeIndex=="7"){
+                    swp=1;
+                }else{
+                    swp=swiper.activeIndex
+                }
+                
+                //if()
+                
+                $(".swiper-button-next").hide();
+                $(".swiper-button-prev").hide();
+                
+                swiper.lockSwipeToNext();
+                swiper.lockSwipeToPrev();
+                
+                $(".xzts").fadeOut()
+                $(".jltxt").fadeOut()
+                $(".lzgb").fadeIn();
+                $(".swiper-pagination").fadeOut();
+                
+                setTimeout(function(){
+                    $(".p5-ly").fadeIn();
+                },200)
+                
+            })
+            
+            var cpx_=0;
+            var cpl;
+            var xlz;
+            var cptime;
+            
+            function cpxl(e){
+                cpx_=0;
+                clearInterval(cpl);
+                
+                if(e==1){
+                    xlz=19;
+                    cptime=35;
+                }
+                if(e==2){
+                    xlz=26
+                    cptime=50;
+                }
+                if(e==3){
+                    xlz=19
+                    cptime=50;
+                }
+                if(e==4){
+                    xlz=25
+                    cptime=80;
+                }
+                if(e==5){
+                    xlz=40
+                    cptime=80;
+                }
+                if(e==6){
+                    xlz=24
+                    cptime=80;
+                }
+                cpl=setInterval(function(){
+                    cpx_++
+                    $(".p4 .swiper-slide-active div").attr("class","x"+e+cpx_)
+                    
+                    if(cpx_==xlz){
+                        cpx_=0;
+                        //clearInterval(cpl);
+                    }
+                },cptime)
+                //1  35
+                //2  50
+                //3  50
+                //4  80
+                //5  80
+                //6  80
+            }
+            
+            $(".p4-button").click(function(){
+                second();
+                ga('send', 'event', 'products-page', 'click','返回按钮');
+                pageStopTime("产品选择",false,userStr);
+                pageStopTime("主页桥",true,userStr);
+                
+                $("#gd .bor").removeClass("dn")
+                
+                $("#cpt1").hide()
+                $("#cpt2").hide()
+                $("#cpt3").hide()
+                $("#cpt4").hide()
+                $("#cpt5").hide()
+                $("#cpt6").hide()
+                
+                
+                redsw();
+                clearInterval(cpl);
+                $(".p4").addClass("off")
+                $(".b255").fadeOut();
+                
+                setTimeout(function(){
+                    $(".p4").hide().removeClass("off")
+                })
+                if(ylsy==2){
+                    $(".p2s").show();
+                }
+                if(ylsy==3){
+                    $(".p2ss").show();
+                }
+                
+                if(dec==2&&decl==2){
+                    $(".p2s").show();
+                }
+                
+//              if(dec==2&&ylsy!=3){
+//                  $(".p2s").show();
+//              }
+                
+                $(".p3").show();
+                $("#gd").removeClass("optext");
+                thisclass()
+            })
+            
+            $(".p5-button").click(function(){
+                second();
+                ga('send', 'event', 'recording-page', 'click','返回按钮1');
+                swiper.unlockSwipeToNext();
+                swiper.unlockSwipeToPrev();
+                $(".swiper-button-next").show();
+                $(".swiper-button-prev").show();
+                $(".xzts").fadeIn()
+                $("#cpt1").fadeIn()
+                $(".lzgb").fadeOut();
+                $(".swiper-pagination").show();
+                formatSeconds(12)
+                $(".p5-ly").fadeOut();
+                setTimeout(function(){
+                    $(".p4_tick").fadeIn();
+                },200)
+                swiper.slideTo(1, 1, false);
+                clearInterval(cpl);
+                
+                $("#xll").attr("class","x10")
+                $("#xl2").attr("class","x20")
+                $("#xl3").attr("class","x30")
+                $("#xl4").attr("class","x40")
+                $("#xl5").attr("class","x50")
+                $("#xl6").attr("class","x60")
+                
+                
+                pageStopTime("录音结束",false,userStr);
+                pageStopTime("产品选择",true,userStr);
+                
+            })
+            
+            $(".p6-back").click(function(){
+                
+                decl=2;
+                
+                $(".p5-button").show();
+                second();
+                playVo=1;
+                $(".p6").fadeOut();
+                setTimeout(function(){
+                    $(".p5-ly").fadeIn();
+                },200)
+                
+                ga('send', 'event', 'recording-page', 'click','返回按钮2');
+                pageStopTime("录音页",false,userStr);
+                pageStopTime("产品选择",true,userStr);
+
+                wx.stopVoice({
+                    localId: mediaId // 需要暂停的音频的本地ID，由stopRecord接口获得
+                });
+            })
+            
+            var ly=1;
+            var vly;
+            
+            var casj=1;
+            
+            var caout;
+            var siout;
+            var START;
+            var END;
+            var recordTimer;
+            var p5_button2 = document.getElementById('p5-button2');
+            p5_button2.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                START = new Date().getTime();
+                
+                recordTimer = setTimeout(function() {
+                   wx.startRecord({
+                     success: function(res) {
+                        ga('send', 'event', 'recording-page', 'click','录音按钮');
+                        vly = setTimeout(function() {
+                            funly()
+                        }, 18500);
+                        siout = setTimeout(function() {
+                            $(".circleProgress_wrapper").attr("style", "-webkit-transform: scale(1.2)").show()
+                        }, 300)
+                        $("#p5-button2 .hianb").attr("style", "-webkit-transform: scale(1.2)");
+                        $(".p5-button").hide();
+                    }
+                  });
+                }, 300);
+             
+                
+            });
+            p5_button2.addEventListener('touchend', function(e) {
+                    
+                    e.preventDefault();
+                    END = new Date().getTime();
+                   alert(END - START)
+                   
+                    if ((END - START) < 300) {
+                        END = 0;
+                        START = 0;
+                        //小于300ms，不录音
+                        clearTimeout(recordTimer);
+                        $(".p5-button").show();
+                    } else {
+                       clearInterval(siout);
+                       clearInterval(caout);
+                      
+                       funly();
+                    }
+               
+                
+            });
+            
+            var mediaId
+            function funly(){
+                //if(casj==1){
+                    //setTimeout(function(){
+                        //wx.stopRecord({
+                           // success: function (res) {
+                                //$(".circleProgress_wrapper").attr("style","").hide()
+                                //$("#p5-button2 .hianb").attr("style","-webkit-transform: scale(1)");
+                                //clearInterval(vly);
+                           // }
+                        //});
+                    //},1000)
+                    
+                //}else{
+                   setTimeout(function(){
+                    wx.stopRecord({
+                        success: function (res) {
+                            
+                            var localId = res.localId;
+                            mediaId = localId;
+                            casj=1;
+                            $(".circleProgress_wrapper").attr("style","").hide()
+                            $("#p5-button2 .hianb").attr("style","-webkit-transform: scale(1)");
+                            $(".p5-ly").fadeOut();
+                            $(".p6").show().removeClass("animated bounceOutDown")
+                            ly=1;
+                            clearInterval(vly);
+                            $(".play_an4").show().removeClass("on");
+                            $(".play_an4s").hide().removeClass("on");
+                            $(".play_an3ss").show().removeClass("on");
+                            $(".play_an3s").hide().removeClass("on");
+                            $(".p6-confirm").removeClass("on");
+                            
+                            pageStopTime("录音页",false,userStr);
+                            pageStopTime("录音预览",true,userStr);
+                            
+                        }
+                    });
+                }, 1000)
+                //}
+            }
+            var playVo=1;
+//          $(".play_an4").click(function(){
+//              if(playVo==1){
+//                  
+//              }else{
+//                  wx.pauseVoice({
+//                      localId: mediaId, // 需要暂停的音频的本地ID，由stopRecord接口获得
+//                      success: function(res) {
+//                      }
+//                  });
+//                  playVo=1;
+//                  clearInterval(aduioend);
+//                  $(this).removeClass("on")
+//                  $(".p6-confirm").addClass("on")
+//              }
+//          })
+
+
+            $(".play_an4").click(function() {
+               
+                dyc = 2;
+
+                second();
+                ga('send', 'event', 'recording-page', 'click', '试听按钮');
+                p_ = 5;
+
+                if ($(this).hasClass("on") == true) {
+                    wx.stopVoice({
+                        localId: mediaId, // 需要暂停的音频的本地ID，由stopRecord接口获得
+                        success: function(res) {
+                            $(".play_an4").removeClass("on")
+                            $(".play_an4").hide();
+                            $(".play_an4s").show();
+                            $(".p6-confirm").addClass("on")
+                            clearInterval(aduioend);
+                            SW.stop();
+                        }
+                    });
+                    
+                } else {
+                    wx.playVoice({
+                        localId: mediaId, // 需要播放的音频的本地ID，由stopRecord接口获得
+                        success: function(res) {
+                       
+                            $(".play_an4").addClass("on");
+                            aduioend = setInterval(ended, 1000);
+                            sonc = "rgba(255,255,255,1)";
+                            SW = new SiriWave({
+                                width: 120,
+                                height: 120
+                            });
+                            SW.setSpeed(0.2);
+                            SW.setNoise(0.5);
+                            SW.start();
+                        }
+                    });
+                    
+                }
+            })
+            $(".play_an4s").click(function() {
+                second();
+                p_ = 6;
+
+                if ($(this).hasClass("on") == true) {
+                    wx.stopVoice({
+                        localId: mediaId, // 需要暂停的音频的本地ID，由stopRecord接口获得
+                        success: function(res) {
+                           
+                            $(".play_an4s").removeClass("on");
+                            clearInterval(aduioend);
+                            SW.stop();
+                        }
+                    });
+                } else {
+
+                    wx.playVoice({
+                        localId: mediaId, // 需要播放的音频的本地ID，由stopRecord接口获得
+                        success: function(res) {
+                           
+                            $(".play_an4s").addClass("on");
+                           
+                            aduioend = setInterval(ended, 1000);
+                            sonc = "rgba(0,0,0,1)";
+                            SW = new SiriWave({
+                                width: 99,
+                                height: 99
+                            });
+                            SW.setSpeed(0.2);
+                            SW.setNoise(0.5);
+                            SW.start();
+                        }
+                    });
+                  
+                   
+                  
+                }
+            })
+            
+            $(".p9_bbg").click(function(){
+                second();
+                mp=1;
+                if(clas==2){
+                    $(".p2s").show();
+                }
+                if(clas==3){
+                    $(".p2ss").fadeOut();
+                }
+                $(".p3").fadeIn();
+                $(".p9").fadeOut();
+                $(".tmbg").fadeOut();
+                $(".p9_b2").removeClass("on");
+                $("#sound1").attr("src","");
+                setTimeout(function(){
+                    $(".head").show();
+                },1000)
+            })
+            
+            var ssj=0;
+            var sdjs;
+            
+            function djsdemo(){
+                sdjs=setTimeout(function(){
+                    ssj=1;
+                },500)
+            }
+            
+            var swi = [];
+            var swfd;
+            var swfds;
+            var swfd__;
+            var swfd_;
+            var spl;
+            var spt;
+            var num_ = 0;
+
+            var top_;
+            var left_;
+            var width_;
+            var otop;
+            var oleft;
+            var cla_;
+
+            var vipname;
+            var vipnum;
+            var natext;
+
+            var buzk = 0;
+            var buzkset;
+            var cla;
+            
+            var clas=1;
+            
+            $("#gd .bor").click(function(){
+                second();
+                if(sjks==2&&ld==1){
+                    natext=""
+                    swfd__ = $(this).attr("style");
+                    if($(this).parent().hasClass("swiper-slide-prev") == true) {
+                        swfd_ = "0" + "/" + $(".swiper-slide-prev .bor").index(this)
+                    }
+                    if($(this).parent().hasClass("swiper-slide-active") == true) {
+                        swfd_ = "1" + "/" + $(".swiper-slide-active .bor").index(this)
+                    }
+                    if($(this).parent().hasClass("swiper-slide-next") == true) {
+                        swfd_ = "2" + "/" + $(".swiper-slide-next .bor").index(this)
+                    }
+                    top_ = $(this).css("top");
+                    left_ = $(this).css("left");
+                    width_ = $(this).css("width");
+    
+                    //$(this).attr("style", "width: " + width_ + "; height: " + width_ + "; top: " + top_ + "; left: " + left_ + ";")
+    
+                    otop = parseInt($(this).offset().top);
+                    oleft = parseInt($(this).offset().left);
+                    console.log('oleft', oleft)
+                    cla_ = $(this).attr("class");
+    
+                    $(this).addClass("dn")
+    
+    
+                    var scale=width_.replace("px","")/492
+                    var tranX=(oleft-75);
+                    var tranY=(otop-140);
+    
+                    swfd = "-webkit-transition: all 1000ms;  -webkit-transform: translate(1px,1px) scale(1);";
+                    swfds = "-webkit-transition: all 1000ms;  -webkit-transform: translate("+tranX+"px,"+tranY+"px) scale("+scale+");";
+                    console.log(swfds)
+                    $("#bub").removeClass("dn c1 c2 c3 c4 c5 c6").addClass(cla_).attr("style", swfds)
+                    
+                    for(var i = 1; i < 7; i++) {
+                        if($(this).hasClass("c" + i) == true) {
+                            cla = i
+                        }
+                    }
+                    
+                    $("#play").show();
+                    $("#play .lrr").attr("src", "../image/common/cp" + cla + ".png");
+                    setTimeout(function() {
+                        $(".play_fun").fadeIn();
+                    }, 1000)
+                    setTimeout(function(){
+                        $("#play .lrr").fadeIn();
+                    },500)
+                    
+                    natext = $(this).find(".vipme").text();
+                    console.log("natext:", natext);
+                    $(".p3").hide();
+                    
+                    clas=1;
+                    
+//                  if(ylsy==2){
+//                      //$(".p2s").hide();
+//                      clas=2;
+//                  }
+//                  if(ylsy==3){
+//                      //$(".p2ss").hide();
+//                      clas=3;
+//                  }
+                    
+                    $(".p2s").hide().removeClass("as ass");
+                    $(".p2ss").hide().removeClass("as");
+                    
+                    if(natext!=""){
+                        if(natext=="吴亦凡"){
+                            ga('send', 'event', 'qiao-page', 'click','吴亦凡');
+                            $("#sound1").attr("src","./yuzhi/1.mp3")
+                            $("#play .head img").attr("src","./yuzhi/1.jpg");
+                            vipnum="1";
+                            vipname="1"
+                        }
+                        if(natext=="周冬雨"){
+                            ga('send', 'event', 'qiao-page', 'click','周冬雨');
+                            $("#sound1").attr("src","./yuzhi/2.mp3")
+                            $("#play .head img").attr("src","./yuzhi/2.jpg");
+                            vipnum="4";
+                            vipname="2"
+                        }
+                        if(natext=="刘昊然"){
+                            ga('send', 'event', 'qiao-page', 'click','刘昊然');
+                            $("#sound1").attr("src","./yuzhi/3.mp3")
+                            $("#play .head img").attr("src","./yuzhi/3.jpg");
+                            vipnum="5";
+                            vipname="3"
+                        }
+                        if (natext == "杨祐宁") {
+                            ga('send', 'event', 'qiao-page', 'click', '杨佑宁');
+                            $("#sound1").attr("src","./yuzhi/4.mp3")
+                            $("#play .head img").attr("src","./yuzhi/4.jpg");
+                            vipnum="2";
+                            vipname="4"
+                        }
+                        if(natext=="宋威龙"){
+                            ga('send', 'event', 'qiao-page', 'click','宋威龙');
+                            $("#sound1").attr("src","./yuzhi/5.mp3")
+                            $("#play .head img").attr("src","./yuzhi/5.jpg");
+                            vipnum="6";
+                            vipname="5"
+                        }
+                        if(natext=="江疏影"){
+                            ga('send', 'event', 'qiao-page', 'click','江疏影');
+                            $("#sound1").attr("src","./yuzhi/6.mp3")
+                            $("#play .head img").attr("src","./yuzhi/6.jpg");
+                            vipnum="2";
+                            vipname="6"
+                        }
+                        if(natext=="张雪迎"){
+                            ga('send', 'event', 'qiao-page', 'click','张雪迎');
+                            $("#sound1").attr("src","./yuzhi/7.mp3")
+                            $("#play .head img").attr("src","./yuzhi/7.jpg");
+                            vipnum="4";
+                            vipname="7"
+                        }
+                        if(natext=="李梦"){
+                            ga('send', 'event', 'qiao-page', 'click','李梦');
+                            $("#sound1").attr("src","./yuzhi/8.mp3")
+                            $("#play .head img").attr("src","./yuzhi/8.jpg");
+                            vipnum="2";
+                            vipname="8"
+                        }
+                        if(natext=="李淳"){
+                            ga('send', 'event', 'qiao-page', 'click','李淳');
+                            $("#sound1").attr("src","./yuzhi/9.mp3")
+                            $("#play .head img").attr("src","./yuzhi/9.jpg");
+                            vipnum="1";
+                            vipname="9"
+                        }
+                        if(natext=="包先生"){
+                            ga('send', 'event', 'qiao-page', 'click','包先生');
+                            $("#sound1").attr("src","./yuzhi/10.mp3")
+                            $("#play .head img").attr("src","./yuzhi/10.jpg");
+                            vipnum="5";
+                            vipname="10"
+                        }
+                        if(natext=="吴岭"){
+                            ga('send', 'event', 'qiao-page', 'click','吴岭');
+                            $("#sound1").attr("src","./yuzhi/11.mp3")
+                            $("#play .head img").attr("src","./yuzhi/11.jpg");
+                            vipnum="4";
+                            vipname="11"
+                        }
+                        if(natext=="黎贝卡"){
+                            ga('send', 'event', 'qiao-page', 'click','黎贝卡');
+                            $("#sound1").attr("src","./yuzhi/12.mp3")
+                            $("#play .head img").attr("src","./yuzhi/12.jpg");
+                            vipnum="6";
+                            vipname="12"
+                        }
+                        
+                        mp=1;
+
+                        $("#play .head span").html(natext)
+                        $("#bub .center img").fadeIn().attr("src", "./image/common/cp" + cla + ".png");
+                        $(".play_an2").show().removeClass("on");
+                        $(".play_an2s").hide().removeClass("on");
+                        $(".play_an3").removeClass("on");
+                        setTimeout(function() {
+                            $(".b255").fadeIn();
+                            $("#bub").attr("style", swfd)
+                        }, 10)
+                        borplay();
+                        $("#play .play_an1").attr("style", "background:url(./image/common/button/zoom-button.png) no-repeat center; background-size:100% 100%;   ");
+                        sh=3;
+                        share();
+                        return false;
+                    }
+                    
+                    $.ajax({
+                            type: "POST",
+                            url: 'getRandomMp3.aspx',
+                            async: false,
+                            data: {"color": "c"+cla},
+                            beforeSend: function(xmlHttpRequest) { },
+                            success: function(data, textStatus) {
+                                var data = "info_201708252237455901657.mp3|韩旭|http://wx.qlogo.cn/mmopen/9icoicibLrDDl5HfxeyxKeocGZufur1pVPkD4aGRrhlWUQWJqShWx4Z9OPcKVAJkReeD78xN2uhiaic10upTWjXPLYw/0"
+                                ga('send', 'event', 'qiao-page', 'click','其他');
+                                $("#play .play_an1").attr("style","")
+                                $("#sound1").attr("src","mp3/"+data.split("|")[0])
+                                $("#play .head span").html(data.split("|")[1])
+                                $("#play .head img").attr("src",data.split("|")[2]);
+                                mp=1;
+                                $(".p3").fadeOut();
+                                $(".p2s").hide();
+                                $(".p2ss").hide();
+                                $("#bub .center img").fadeIn().attr("src","./image/common/cp"+cla+".png");
+
+                                $(".play_an2").show().removeClass("on");
+                                $(".play_an2s").hide().removeClass("on");
+                                $(".play_an3").removeClass("on");
+                                setTimeout(function(){
+                                    $(".b255").fadeIn();
+                                    $("#bub").attr("style",swfd)
+                                },10)
+                                borplay();
+                            },
+                            complete: function(xmlHttpRequest, textStatus) { },
+                            error: function() {
+                                var data = "info_201708252237455901657.mp3|韩旭|http://wx.qlogo.cn/mmopen/9icoicibLrDDl5HfxeyxKeocGZufur1pVPkD4aGRrhlWUQWJqShWx4Z9OPcKVAJkReeD78xN2uhiaic10upTWjXPLYw/0"
+                                
+                                $("#play .play_an1").attr("style","")
+                                $("#sound1").attr("src","mp3/"+data.split("|")[0])
+                                $("#play .head span").html(data.split("|")[1])
+                                $("#play .head img").attr("src",data.split("|")[2]);
+                                mp=1;
+                                $(".p3").fadeOut();
+                                $(".p2s").hide();
+                                $(".p2ss").hide();
+                                $("#bub .center img").fadeIn().attr("src","./image/common/cp"+cla+".png");
+
+                                $(".play_an2").show().removeClass("on");
+                                $(".play_an2s").hide().removeClass("on");
+                                $(".play_an3").removeClass("on");
+                                setTimeout(function(){
+                                    $(".b255").fadeIn();
+                                    $("#bub").attr("style",swfd)
+                                },10)
+                                borplay();
+                            }
+                    });
+                }
+            })
+            
+            function borplay(){
+                swi.splice(0,swi.length);
+                $("#gd").addClass("optext")
+                
+                for(var i=0;i<3;i++){
+                    
+                    var swborleng;
+                    if(i==0){
+                        swborleng=$("#gd .swiper-slide-prev .bor").length
+                    }else if(i==1){
+                        swborleng=$("#gd .swiper-slide-active .bor").length
+                    }else if(i==2){
+                        swborleng=$("#gd .swiper-slide-next .bor").length
+                    }
+                    for(var u=1;u<=swborleng;u++){
+                        var sw_;
+                        var ip_;
+                        
+                        if(i==0){
+                            sw_="#gd .swiper-slide-prev"
+                            ip_="p"
+                        }
+                        if(i==1){
+                            sw_="#gd .swiper-slide-active"
+                            ip_="a"
+                        }
+                        if(i==2){
+                            sw_="#gd .swiper-slide-next"
+                            ip_="n"
+                        }
+                        var swl = parseInt($(sw_ + " .bor:nth-child(" + u + ")").offset().left);
+                        var swt = parseInt($(sw_ + " .bor:nth-child(" + u + ")").offset().top);
+                        var swt_ = 0;
+                        var swl_ = 0;
+                        var sww_ = parseInt($(sw_ + " .bor:nth-child(" + u + ")").css('width'));
+                        
+                        if(swl < 600 && swl > -150) {
+                            var swsty = 0;
+                            //$(sw_+" .bor:nth-child("+u+")").attr("style","width: "+$(sw_+" .bor:nth-child("+u+")").css("width")+"; height: "+$(sw_+" .bor:nth-child("+u+")").css("width")+"; top: "+$(sw_+" .bor:nth-child("+u+")").css("top")+"; left: "+$(sw_+" .bor:nth-child("+u+")").css("left")+";")
+                            var swsty_ =0;
+                            //$(sw_+" .bor:nth-child("+u+") .center").attr("style","")
+                            //$(sw_+" .bor:nth-child("+u+")").attr("style",swsty)
+                            //$(sw_+" .bor:nth-child("+u+") .center").attr("style",swsty_)
+                            swi.push(swl + "/" + swt + "/" + sww_ + "/" + ip_ + u + "/" + swt_ + "/" + swl_ + "/" + swsty)
+                        }
+                    }
+                }
+                
+                
+                bu_(top_,left_,width_,otop,oleft,cla_)
+            }
+            
+            function bu_(t,l,w,ot,ol,c){
+                for(var i=0;i<swi.length;i++){
+                    var swfy=swi[i].split('/')[3].substr(0, 1);
+                    var swfy_=swi[i].split('/')[3].substr(1, 2);
+                    var swls=swi[i].split('/')[0];
+                    var swts=swi[i].split('/')[1];
+                    var sww=swi[i].split('/')[2];
+                    var swts_=swi[i].split('/')[4];
+                    var swls_=swi[i].split('/')[5];
+                    
+                    if(swfy == "p") {
+                        spl=""
+                        spt=""
+                        swup(swls, swts, swls_, swts_, sww);
+                        $("#gd .swiper-slide-prev .bor:nth-child(" + swfy_ + ") .allxy").attr("style", "-webkit-transform:translate(" + spl + "px," + spt + "px);");
+                    }
+                    if(swfy == "a") {
+                        swup(swls, swts, swls_, swts_, sww);
+                        $("#gd .swiper-slide-active .bor:nth-child(" + swfy_ + ") .allxy").attr("style", "-webkit-transform:translate(" + spl + "px," + spt + "px);");
+                    }
+                    if(swfy == "n") {
+                        swup(swls, swts, swls_, swts_, sww);
+                        $("#gd .swiper-slide-next .bor:nth-child(" + swfy_ + ") .allxy").attr("style", "-webkit-transform:translate(" + spl + "px," + spt + "px);");
+                    }
+                }
+            }
+            
+            function swup(e, u, e_, u_, w_) {
+                num_++
+                var mathran=parseInt(Math.random()*200)
+                if(u > 500 && e > 320) {
+                    //右下
+                    if(num_ % 2 == 0) {
+                        spl = 640 - e;
+                        spt = u
+                    } else {
+                        spl = e;
+                        spt = 1009 - u-100;
+                    }
+                } else if(u < 500 && e > 320) {
+                    //右上
+                    if(num_ % 2 == 0) {
+                        spl = 640 - e-100;
+                        spt = u
+                    } else {
+                        spl = e;
+                        spt = u * -1 - w_-100
+                    }
+                } else if(u < 500 && e < 320) {
+                    //左上
+                    if(num_ % 2 == 0) {
+                        spl = e * -1 - w_+100
+                        spt = u
+                    } else {
+                        spl = e;
+                        spt = u * -1 - w_+100
+                    }
+                } else if(u > 500 && e < 320) {
+                    //左下
+                    if(num_ % 2 == 0) {
+                        spl = e * -1 - w_
+                        spt = u
+                    } else {
+                        spl = e;
+                        spt = 1009 - u-100
+                    }
+                }
+            }
+            var buzksetd;
+            $("#play .Close").click(function(){
+                second();
+                ga('send', 'event', 'vip-page', 'click','vip关闭1');
+                playc();
+                ld=2
+                
+                //$("#gd .bor").removeClass("dn")
+            })
+            
+            function playc(){
+                
+                sh=1;
+                share();
+                
+                $("#play .lrr").fadeOut();
+                $(".b255").fadeOut();
+                $("#sound1").attr("src", "");
+                
+                $(".play_fun").fadeOut();
+                $("#play").show();
+                
+                setTimeout(function() {
+                    $("#play").fadeOut();
+                    $(".p3").fadeIn();
+                    if(ylsy==2){
+                        $(".p2s").show();
+                    }
+                    if(ylsy==3){
+                        $(".p2ss").show();
+                    }
+                    
+                    setTimeout(function(){
+                        $("#bub").attr("style", "").attr("class","");
+                        setTimeout(function(){
+                            ld=1;
+                        },100)
+                    },500)
+                    var swnum = Number(swfd_.split('/')[1]) + 1
+                    if(swfd_.split('/')[0] == 0) {
+                        $("#gd .swiper-slide-prev .bor:nth-child(" + swnum + ")").removeClass("dn")
+                    }
+                    if(swfd_.split('/')[0] == 1) {
+                        $("#gd .swiper-slide-active .bor:nth-child(" + swnum + ")").removeClass("dn")
+                    }
+                    if(swfd_.split('/')[0] == 2) {
+                        $("#gd .swiper-slide-next .bor:nth-child(" + swnum + ")").removeClass("dn")
+                    }
+                }, 1500);
+                setTimeout(function() {
+                    $("#bub").attr("style", swfds);
+                    $("#play .play_an1").attr("src", "")
+                    
+                    redsw();
+                }, 500)
+            }
+            var ld=1;
+            function thisclass(){
+                setTimeout(function(){
+                    $("#gd").removeClass("optext")
+                    $("#play").fadeOut();
+                    var swnum=Number(swfd_.split('/')[1])+1
+                    if(swfd_.split('/')[0]==0){
+                        $("#gd .swiper-slide-prev .bor:nth-child("+swnum+")").removeClass("dn").attr("style",swfd__)
+                    }
+                    if(swfd_.split('/')[0]==1){
+                        $("#gd .swiper-slide-active .bor:nth-child("+swnum+")").removeClass("dn").attr("style",swfd__)
+                    }
+                    if(swfd_.split('/')[0]==2){
+                        $("#gd .swiper-slide-next .bor:nth-child("+swnum+")").removeClass("dn").attr("style",swfd__)
+                    }
+                    $(".p3").fadeIn();
+                    if(clas==2){
+                        $(".p2s").show();
+                    }
+                    if(clas==3){
+                        $(".p2ss").show();
+                    }
+                },1100);
+            }
+            
+            function redsw(){
+                $("#gd").removeClass("optext")
+                for(var i = 0; i < swi.length; i++) {
+                    var swfy = swi[i].split('/')[3].substr(0, 1);
+                    var swfy_ = swi[i].split('/')[3].substr(1, 2);
+                    var swls = swi[i].split('/')[0];
+                    var swts = swi[i].split('/')[1];
+                    var swts_ = swi[i].split('/')[4];
+                    var swls_ = swi[i].split('/')[5];
+                    if(swfy == "p") {
+                        $("#gd .allxy").attr("style", "-webkit-transform:translate(0px,0px);");
+                    }
+                    if(swfy == "a") {
+                        $("#gd .swiper-slide-active .bor:nth-child(" + swfy_ + ") .allxy").attr("style", "-webkit-transform:translate(0px,0px);");
+                    }
+                    if(swfy == "n") {
+                        $("#gd .swiper-slide-next .bor:nth-child(" + swfy_ + ") .allxy").attr("style", "-webkit-transform:translate(0px,0px);");
+                    }
+                }
+            }
+            
+            var xz=1
+            
+            $("#p9 .Close").click(function(){
+                second();
+                
+                ga('send', 'event', 'Success-page', 'click','关闭按钮');
+                pageStopTime("尾页",false,userStr);
+                pageStopTime("主页桥",true,userStr);
+                $("#p9").fadeOut();
+                $(".p3").fadeIn();
+                $(".p2s").remove();
+                $(".p3_text").hide();
+                setTimeout(function(){
+                    $(".xzsy").fadeIn();
+                    $(".p2ss").show();
+                },1000)
+                setTimeout(function(){
+                    $(".xzsy").fadeOut();
+                    $(".p3_text").fadeIn();
+                },4000)
+                
+                $("#suo .centers").removeClass("on");
+                $(".play_an3ss").removeClass("on").show();
+                $(".play_an3s").removeClass("on").hide();
+                $(".play_an3").removeClass("on")
+                $("#gd").removeClass("optext")
+                redsw();
+                $("#gd .bor").removeClass("dn")
+                thisclass();
+                
+            })
+            
+
+            $("#play .play_an1").click(function(){
+                second();
+                if($(".play_an1").attr("style")!=""){
+                    ga('send', 'event', 'vip-page', 'click','vip关闭2');
+                    playc();
+                    
+                }else{
+                    $("#wwtz").show()
+                }
+            });
+            
+            $("#p9 .play_an1").click(function(){
+                second();
+                ga('send', 'event', 'Success-page', 'click','购物车按钮');
+                $("#wwtz").show()
+            })
+            $(".wwgb").click(function(){
+                second();
+                $("#wwtz").removeClass("fadeInRight").addClass("fadeInoutRight")
+                setTimeout(function(){
+                    $("#wwtz").hide().removeClass("fadeInoutRight").addClass("fadeInRight");
+                },1000)
+            })
+            $(".lj1").click(function(){
+                second();
+                ga('send', 'event', 'shop-page', 'click','女生礼物');
+                setTimeout(function(){
+                window.location.href = "https://cn.burberry.com/womens-burberry-beasts/?utm_source=wechat&utm_medium=social&utm_campaign=2017qixih5women"
+                },100)
+                
+            })
+            $(".lj2").click(function(){
+                second();
+                ga('send', 'event', 'shop-page', 'click','男生礼物');
+                setTimeout(function(){
+                window.location.href = "https://cn.burberry.com/mens-burberry-beasts/?utm_source=wechat&utm_medium=social&utm_campaign=2017qixih5men"
+                },100)
+                
+            })
+            
+            var sonc="rgba(255,255,255,1)";
+            var SW;
+            var p_;
+
+            $(".play_an2").click(function() {
+                second();
+                if (natext != "") {
+                    if (natext == "吴亦凡") {
+                        ga('send', 'event', 'vip-page', 'click', '吴亦凡播放');
+                    }
+                    if (natext == "周冬雨") {
+                        ga('send', 'event', 'vip-page', 'click', '周冬雨播放');
+                    }
+                    if (natext == "刘昊然") {
+                        ga('send', 'event', 'vip-page', 'click', '刘昊然播放');
+                    }
+                    if (natext == "杨祐宁") {
+                        ga('send', 'event', 'vip-page', 'click', '杨佑宁播放');
+                    }
+                    if (natext == "宋威龙") {
+                        ga('send', 'event', 'vip-page', 'click', '宋威龙播放');
+                    }
+                    if (natext == "江疏影") {
+                        ga('send', 'event', 'vip-page', 'click', '江疏影播放');
+                    }
+                    if (natext == "张雪迎") {
+                        ga('send', 'event', 'vip-page', 'click', '张雪迎播放');
+                    }
+                    if (natext == "李梦") {
+                        ga('send', 'event', 'vip-page', 'click', '李梦播放');
+                    }
+                    if (natext == "李淳") {
+                        ga('send', 'event', 'vip-page', 'click', '李淳播放');
+                    }
+                    if (natext == "包先生") {
+                        ga('send', 'event', 'vip-page', 'click', '包先生播放');
+                    }
+                    if (natext == "吴岭") {
+                        ga('send', 'event', 'vip-page', 'click', '吴岭播放');
+                    }
+                    if (natext == "黎贝卡") {
+                        ga('send', 'event', 'vip-page', 'click', '黎北卡播放');
+                    }
+                }
+
+                p_ = 1;
+
+                if (ylsy == 3) {
+                    msid = mediaId
+                }
+
+                if ($(".p2s").hasClass("as") == true || $(".p2s").hasClass("ass") == true) {
+                    if ($(".p2s").hasClass("as") != true) {
+
+
+                        if ($(this).hasClass("on") == true) {
+                            $(".play_an2").hide();
+                            $(".play_an2s").show();
+                            // $("#play .play_an3").addClass("on")
+                            $("#sound1")[0].pause();
+                            clearInterval(aduioend);
+                            SW.stop();
+                        } else {
+                            $("#sound1")[0].play();
+                            $(this).addClass("on");
+                            aduioend = setInterval(ended, 1000);
+                            sonc = "rgba(255,255,255,1)";
+                            SW = new SiriWave({
+                                width: 120,
+                                height: 120
+                            });
+                            SW.setSpeed(0.2);
+                            SW.setNoise(0.5);
+                            SW.start();
+                        }
+
+
+
+                    } else {
+
+                        if ($(this).hasClass("on") == false) {
+                            if (msid.length == 0) {
+                                wx.downloadVoice({
+                                    serverId: fileName,
+                                    isShowProgressTips: 1,
+                                    success: function(res) {
+                                        var localIds = res.localId;
+                                        msid = localIds;
+                                        wx.playVoice({
+                                            localId: msid,
+                                            success: function(res) {
+                                                $(".play_an2").addClass("on");
+                                                aduioend = setInterval(ended, 1000);
+                                                sonc = "rgba(255,255,255,1)";
+                                                SW = new SiriWave({
+                                                    width: 120,
+                                                    height: 120
+                                                });
+                                                SW.setSpeed(0.2);
+                                                SW.setNoise(0.5);
+                                                SW.start();
+                                            },
+                                            fail: function(res) {
+
+                                            },
+                                            cancel: function(res) {
+
+                                            }
+                                        });
+                                        wx.onVoicePlayEnd({
+                                            success: function(res) {
+
+
+                                            }
+                                        });
+
+                                    },
+                                    fail: function(res) {
+
+                                    }
+                                });
+                            } else {
+                                wx.playVoice({
+                                    localId: msid, // 需要播放的音频的本地ID，由stopRecord接口获得
+                                    success: function(res) {
+                                        $(".play_an2").addClass("on");
+                                        aduioend = setInterval(ended, 1000);
+                                        sonc = "rgba(255,255,255,1)";
+                                        SW = new SiriWave({
+                                            width: 120,
+                                            height: 120
+                                        });
+                                        SW.setSpeed(0.2);
+                                        SW.setNoise(0.5);
+                                        SW.start();
+                                    }
+                                });
+                            }
+                        }
+                        else {
+                            wx.stopVoice({
+                                localId: msid, // 需要播放的音频的本地ID，由stopRecord接口获得
+                                success: function(res) {
+                                    $(".play_an2").hide();
+                                    $(".play_an2s").show();
+                                    $("#play .play_an3").addClass("on");
+                                    clearInterval(aduioend);
+                                    SW.stop();
+                                }
+                            });
+                        }
+
+
+                    }
+
+                } else if ($(".p2ss").hasClass("as") == true) {
+                    if ($(this).hasClass("on") == true) {
+                        wx.stopVoice({
+                            localId: msid, // 需要播放的音频的本地ID，由stopRecord接口获得
+                            success: function(res) {
+                                $(".play_an2").hide();
+                                $(".play_an2s").show();
+                                $("#play .play_an3").addClass("on");
+                                clearInterval(aduioend);
+                                SW.stop();
+                            }
+                        });
+                    } else {
+                        wx.playVoice({
+                            localId: msid,
+                            success: function(res) {
+                                $(".play_an2").addClass("on");
+                                aduioend = setInterval(ended, 1000);
+                                sonc = "rgba(255,255,255,1)";
+                                SW = new SiriWave({
+                                    width: 120,
+                                    height: 120
+                                });
+                                SW.setSpeed(0.2);
+                                SW.setNoise(0.5);
+                                SW.start();
+                            },
+                            fail: function(res) {
+
+                            },
+                            cancel: function(res) {
+
+                            }
+                        });
+                    }
+                } else {
+                    if ($(this).hasClass("on") == true) {
+                        $(".play_an2").hide();
+                        $(".play_an2s").show();
+                        $("#play .play_an3").addClass("on")
+                        $("#sound1")[0].pause();
+                        clearInterval(aduioend);
+                        SW.stop();
+                    } else {
+                        $("#sound1")[0].play();
+                        $(this).addClass("on");
+                        aduioend = setInterval(ended, 1000);
+                        sonc = "rgba(255,255,255,1)";
+                        SW = new SiriWave({
+                            width: 120,
+                            height: 120
+                        });
+                        SW.setSpeed(0.2);
+                        SW.setNoise(0.5);
+                        SW.start();
+                    }
+                }
+            })
+            $(".play_an2s").click(function(){
+                second();
+                p_=2;
+                if($(".p2s").hasClass("as")==true||$(".p2s").hasClass("ass")==true){
+                    if($(".p2s").hasClass("ass")==true){
+                        if ($(this).hasClass("on")==true){
+                            $(".play_an2s").removeClass("on");
+                            $("#sound1")[0].pause();
+                            clearInterval(aduioend);
+                            SW.stop();
+                        }else{
+                            $("#sound1")[0].play();
+                            $(this).addClass("on");
+                            aduioend = setInterval(ended, 1000);
+                            sonc="rgba(0,0,0,1)";
+                            SW = new SiriWave({
+                                width: 99,
+                                height: 99
+                            });
+                            SW.setSpeed(0.2);
+                            SW.setNoise(0.5);
+                            SW.start();
+                        }
+                    }else{
+                        if($(this).hasClass("on")==true){
+                            wx.stopVoice({
+                                        localId: msid, // 需要播放的音频的本地ID，由stopRecord接口获得
+                                        success: function(res) {
+                                            $(".play_an2s").removeClass("on");
+                                            clearInterval(aduioend);
+                                            SW.stop();
+                                        }
+                                    });
+                                }else{
+                                    wx.playVoice({
+                                        localId: msid,
+                                        success: function(res) {
+                                            
+                                        },
+                                        fail: function(res) {
+    
+    
+                                        },
+                                        cancel: function(res) {
+    
+                                        }
+                                    });
+                                    
+                                    $(".play_an2s").addClass("on");
+                                            aduioend = setInterval(ended, 1000);
+                                            sonc="rgba(0,0,0,1)";
+                                            SW = new SiriWave({
+                                                width: 99,
+                                                height: 99
+                                            });
+                                            SW.setSpeed(0.2);
+                                            SW.setNoise(0.5);
+                                            SW.start();
+                                }
+                    }
+                }else if($(".p2ss").hasClass("as")==true){
+                    
+                    
+                    if($(this).hasClass("on")==true){
+                        wx.stopVoice({
+                                        localId: mediaId, // 需要播放的音频的本地ID，由stopRecord接口获得
+                                        success: function(res) {
+                                            $(".play_an2s").removeClass("on");
+                                            clearInterval(aduioend);
+                                            SW.stop();
+                                        }
+                                    });
+                    }else{
+                        wx.playVoice({
+                            localId: mediaId,
+                            success: function(res) {
+                                   $(".play_an2s").addClass("on");
+                                            aduioend = setInterval(ended, 1000);
+                                            sonc="rgba(0,0,0,1)";
+                                            SW = new SiriWave({
+                                                width: 99,
+                                                height: 99
+                                            });
+                                            SW.setSpeed(0.2);
+                                            SW.setNoise(0.5);
+                                            SW.start();         
+                            },
+                            fail: function(res) {
+    
+    
+                            },
+                            cancel: function(res) {
+    
+                        }
+                        });
+                                    
+                                    
+                    }   
+                }else{
+                    if ($(this).hasClass("on")==true){
+                            $(".play_an2s").removeClass("on");
+                            $("#sound1")[0].pause();
+                            clearInterval(aduioend);
+                            SW.stop();
+                        }else{
+                            $("#sound1")[0].play();
+                            $(this).addClass("on");
+                            aduioend = setInterval(ended, 1000);
+                            sonc="rgba(0,0,0,1)";
+                            SW = new SiriWave({
+                                width: 99,
+                                height: 99
+                            });
+                            SW.setSpeed(0.2);
+                            SW.setNoise(0.5);
+                            SW.start();
+                        }
+                }
+            })
+            
+            var mp=1;
+            var aduioend;
+//          $(".play_an3s").click(function(){
+//              var ti=$(this).attr("class")
+//              if(ti=="play_an3s pa"){
+//                  wx.playVoice({
+//                      localId: mediaId, // 需要播放的音频的本地ID，由stopRecord接口获得
+//                      success: function(res) {
+//                      }
+//                  });
+//                  $(this).addClass("on")
+//                  aduioend = setInterval(ended, 1000);
+//                  
+//              }else{
+//                  wx.pauseVoice({
+//                      localId: mediaId, // 需要播放的音频的本地ID，由stopRecord接口获得
+//                      success: function(res) {
+//                      }
+//                  });
+//                  $(this).removeClass("on");
+//                  clearInterval(aduioend);
+//              }
+//          })
+            
+            $(".play_an3ss").click(function(){
+                second();
+                ga('send', 'event', 'Success-page', 'click','播放录音');
+                p_=3;
+                var ti=$(this).attr("class")
+                //alert(mediaId+"/"+ti)
+                if($(this).hasClass("on")!=true){
+                    wx.playVoice({
+                        localId: mediaId, // 需要播放的音频的本地ID，由stopRecord接口获得
+                        success: function(res) {
+                            $(this).addClass("on")
+                            aduioend = setInterval(ended, 1000);
+                            sonc="rgba(255,255,255,1)";
+                            SW = new SiriWave({
+                                width: 120,
+                                height: 120
+                            });
+                            SW.setSpeed(0.2);
+                            SW.setNoise(0.5);
+                            SW.start();
+                            $(".play_an3ss").addClass("on")
+                        }
+                    });
+                    
+                }else{
+                wx.stopVoice({
+                        localId: mediaId, // 需要播放的音频的本地ID，由stopRecord接口获得
+                        success: function(res) {
+                            $(this).removeClass("on");
+                            clearInterval(aduioend);
+                            SW.stop();
+                            $(".play_an3ss").hide();
+                            $(".play_an3s").show();
+                            $("#p9 .play_an3").addClass("on")
+                            $(".play_an3ss").removeClass("on")
+                        }
+                    });
+                    
+                }
+            })
+            $(".play_an3s").click(function(){
+                second();
+                p_=4;
+                var ti=$(this).attr("class")
+                if($(this).hasClass("on")!=true){
+                    wx.playVoice({
+                        localId: mediaId, // 需要播放的音频的本地ID，由stopRecord接口获得
+                        success: function(res) {
+                            $(this).addClass("on")
+                            aduioend = setInterval(ended, 1000);
+                            sonc="rgba(0,0,0,1)";
+                            SW = new SiriWave({
+                                width: 99,
+                                height: 99
+                            });
+                            SW.setSpeed(0.2);
+                            SW.setNoise(0.5);
+                            SW.start();
+                            $(".play_an3s").addClass("on")
+                        }
+                    });
+                    
+                }else{
+                wx.stopVoice({
+                        localId: mediaId, // 需要播放的音频的本地ID，由stopRecord接口获得
+                        success: function(res) {
+                        }
+                    });
+                    $(this).removeClass("on");
+                    clearInterval(aduioend);
+                    SW.stop();
+                    $(".play_an3s").removeClass("on")
+                }
+            })
+            
+            function ended(){
+                if($(".play_an4").hasClass("on")==true){
+                    wx.onVoicePlayEnd({
+                        success: function (res) {
+                            clearInterval(aduioend);
+                            $(".play_an4").hide().removeClass("on");
+                            $(".play_an4s").show().removeClass("on");
+                            $(".p6-confirm").addClass("on")
+                            SW.stop();
+                        }
+                    });
+                    return;
+                }
+                if($(".play_an4s").hasClass("on")==true){
+                    wx.onVoicePlayEnd({
+                        success: function (res) {
+                            clearInterval(aduioend);
+                            $(".play_an4").hide().removeClass("on");
+                            $(".play_an4s").show().removeClass("on");
+                            $(".p6-confirm").addClass("on")
+                            SW.stop();
+                        }
+                    });
+                    return;
+                }
+                
+                if($(".play_an3ss").hasClass("on")==true){
+                    wx.onVoicePlayEnd({
+                        success: function (res) {
+                            clearInterval(aduioend);
+                            $(".play_an3ss").hide().removeClass("on");
+                            $(".play_an3s").show().removeClass("on");
+                            $("#p9 .play_an3").addClass("on")
+                            SW.stop();
+                        }
+                    });
+                    return;
+                }
+
+                if ($(".play_an3s").hasClass("on")==true) {
+                    wx.onVoicePlayEnd({
+                        success: function(res) {
+                            clearInterval(aduioend);
+                            $(".play_an3ss").hide().removeClass("on");
+                            $(".play_an3s").show().removeClass("on");
+                            $("#p9 .play_an3").addClass("on")
+                            SW.stop();
+                        }
+                    });
+                    return;
+                }
+                
+                if($(".p2s").hasClass("as")==true||$(".p2s").hasClass("ass")==true){
+                    if($(".p2s").hasClass("as")==true){
+                        wx.onVoicePlayEnd({
+                            success: function(res) {
+                                clearInterval(aduioend);
+                                $(".play_an2").hide().removeClass("on");
+                                $(".play_an2s").show().removeClass("on");
+                                $("#play .play_an3").addClass("on")
+                                SW.stop();
+                            }
+                       });
+                    }else{
+                        if ($("#sound1")[0].ended == true) {
+                            clearInterval(aduioend);
+                            $(".play_an2").hide().removeClass("on");
+                            $(".play_an2s").show().removeClass("on");
+                            $("#play .play_an3").addClass("on");
+                            SW.stop();
+                        }
+                    }
+                }else if($(".p2ss").hasClass("as")==true){
+                    wx.onVoicePlayEnd({
+                        success: function(res) {
+                            clearInterval(aduioend);
+                            $(".play_an2").hide().removeClass("on");
+                            $(".play_an2s").show().removeClass("on");
+                            $("#play .play_an3").addClass("on")
+                            SW.stop();
+                        }
+                    });
+                }else{
+                    if ($("#sound1")[0].ended == true) {
+                        clearInterval(aduioend);
+                        $(".play_an2").hide().removeClass("on");
+                        $(".play_an2s").show().removeClass("on");
+                        $("#play .play_an3").addClass("on")
+                        SW.stop();
+                    }
+                }
+            }
+            
+            $("#play .play_an3").click(function(){
+                second();
+                $("#p9").fadeOut();
+                $("#play").fadeOut();
+                $("#play .play_an3").removeClass("on")
+                $("#sound1").attr("src","")
+                $("#cpt1").hide()
+                $("#cpt2").hide()
+                $("#cpt3").hide()
+                $("#cpt4").hide()
+                $("#cpt5").hide()
+                $("#cpt6").hide()
+                showp4();
+                ga('send', 'event', 'vip-page', 'click','vip录音按钮');
+                pageStopTime("主页桥",false,userStr);
+                pageStopTime("产品选择",true,userStr);
+            })
+            
+            $("#p9 .play_an3").click(function(){
+                
+                second();
+                ga('send', 'event', 'Success-page', 'click','我要制作');
+                $("#p9").fadeOut();
+                $("#play").fadeOut();
+                $("#play .play_an3").removeClass("on")
+                $("#sound1").attr("src","")
+                $("#cpt1").hide()
+                $("#cpt2").hide()
+                $("#cpt3").hide()
+                $("#cpt4").hide()
+                $("#cpt5").hide()
+                $("#cpt6").hide()
+                showp4();
+                
+                pageStopTime("尾页",false,userStr);
+                pageStopTime("产品选择",true,userStr);
+            })
+            
+            
+            $(".p3 .hian,.p3 .hianb").click(function(){
+                second();
+                $(".p3").fadeOut();
+                if(ylsy==2){
+                    $(".p2s").hide();
+                }
+                if(ylsy==3){
+                    $(".p2ss").hide();
+                }
+                
+                borplay();
+                showp4();
+                
+                $("#xll").attr("class","x10")
+                $("#xl2").attr("class","x20")
+                $("#xl3").attr("class","x30")
+                $("#xl4").attr("class","x40")
+                $("#xl5").attr("class","x50")
+                $("#xl6").attr("class","x60")
+                
+                $(".xzts").show();
+                $(".lzgb").hide();
+                //cpxl(1)
+            })
+            function showp4(){
+                $(".p4_tick").show();
+                $(".p5-ly").hide();
+                $(".p6").hide();
+                $(".p4").attr("class","p4 animated flash_").show();
+                $(".b255").show();
+                swiper.update();
+                swiper.slideTo(1, 1, false);
+                swiper.unlockSwipeToNext();
+                swiper.unlockSwipeToPrev();
+                formatSeconds(12)
+                $(".swiper-button-next").show();
+                $(".swiper-button-prev").show();
+                $(".xzts").fadeIn()
+                $("#cpt1").fadeIn()
+                $(".lzgb").hide();
+                $(".swiper-pagination").show();
+            }
+            
+            $(".p6-confirm").click(function(){
+                second();
+                ga('send', 'event', 'recording-page', 'click','确认按钮');
+                $("#sfyy").show();
+                $(".p4").attr("class","p4 animated flash_ off")
+                setTimeout(function(){
+                    $(".p4").hide();
+                    $(".p6-confirm").removeClass("on")
+                },1000)
+                dyc=3;
+                decl=2;
+                clearInterval(cpl);
+
+                wx.stopVoice({
+                    localId: mediaId // 需要暂停的音频的本地ID，由stopRecord接口获得
+                });
+                
+            })
+            
+            var sws=0;
+            var swp;
+            
+            function sf(e){
+                $("#suo").hide();
+                $(".suocl").hide();
+                playVo=1;
+                wx.uploadVoice({
+                    localId: mediaId, // 需要上传的音频的本地ID，由stopRecord接口获得
+                    isShowProgressTips: 1, // 默认为1，显示进度提示
+                    success: function(res) {
+                        var serverId = res.serverId; // 返回音频的服务器端ID
+                      
+                        
+                        $.ajax({
+                            type: "POST",
+                            url: 'saveImg_s.aspx',
+                            async: false,
+                            data: {
+                                "mediaId": serverId,
+                                "color": "c" + swp,
+                                "sf": e,
+                                "str": 'ZacykbaW/o9PKPLDR2FmvwH8VIq8FDx/CJJIU4pAAcezFC9A7HA6EiA6OM/M0BxiuD2PKaMcChcV00omb7m1BAmzMNTOehYecRWAO4ggNqIrxCW8VI7E6nJCZV/9SJatYvKmxo1kxtxNSVzyOS5oDpGGqcjSY8eTESQbVeA5ZAoYCAtowfBDYwDdK8pPH0GJKsRkJx0m54EdtFbF1aQJtmWydRyvxi uACHCFJUnJtEUW5f5hNzT10OpijXXQ/2C/d S2IVz03XJ5Ki3czf/U9evAfQ2E2EtJWUAwraj6aPrpKSWDeWzEyUDdmEhhotZ/aOyK7qzWuKHnv9TydHXNuseiBdGkq0DHaGo28 0o/h60FkFcz/0K60qauVBsoZbaBKAWUnOZ9HTpMTnu JLL2HDSz5RZfYmeWvt9gf9tX78biX oRlKXAwQqe1/CgrySaydx6poUPLoWIaoxjyPNZCrKFDXKwbGsQEDU43XnsUlBV/bbkKWEXJX0ubDMHyN I3l b6stwzg2dI/ BJl2w=='
+
+                            },
+                            beforeSend: function(xmlHttpRequest) { },
+                            success: function(data, textStatus) {
+
+                                mp3Id = data
+                                sws = e
+                                
+                                if (data > 0) {
+                                    
+                                    ylsy=3;
+                                    
+                                    dec=1;
+                                    $("#p9cp").show();
+                                    $(".b255").fadeOut();
+                                    $("#suo").addClass("animated500 flash_").show();
+                                    $("#p9cp").attr("class", "pa bor c" + swp)
+                                    $("#p9cp .center img").attr("src", "../image/common/cp" + swp + ".png");
+                                    if (e == 1) {
+                                        ga('send', 'event', 'recording-page', 'click','愿意');
+                                        $(".suocl").attr("class", "suocl pa bor c" + swp)
+                                    } else {
+                                        ga('send', 'event', 'recording-page', 'click','私密传送我的告白');
+                                        $(".suocl").attr("class", "suocl pa bor on c" + swp)
+                                    }
+                                    $("#suo").show();
+                                    prnum = swp;
+                                    $("#cpackage").show();
+                                    prnun = 28;
+                                    initime(85)
+                                    packup();
+                                    $("#sfyy").removeClass("fadeInRight").addClass("fadeInoutRight")
+                                    setTimeout(function() {
+                                        $("#sfyy").hide().removeClass("fadeInoutRight").addClass("fadeInRight");
+                                    }, 1000)
+
+                                    $(".p9 .gblz").hide();
+                                    $(".p9 .head").hide();
+                                    //suoplay();
+
+
+                                }
+                                else if (data == "-2") {
+
+                                }
+                                else {
+                                    iAlert.fnAdd({
+                                        sTitle: '',
+                                        aContent: ['网络错误!'],
+                                        oButton: {
+                                            bType: 1,
+                                            oSingle: { sText: '关闭', aEvents: ['onclick="iAlert.fnDel()"'] },
+                                            oMarried: {
+                                                oNegative: { sText: 'Cancel', aEvents: ['onclick="iAlert.fnDel();fnTemp.cancel()"'] },
+                                                oPositive: { sText: 'Confirm', aEvents: ['onclick="fnTemp.confirm()"'] }
+                                            }
+                                        }
+                                    });
+                                }
+
+                            },
+                            complete: function(xmlHttpRequest, textStatus) { },
+                            error: function() {
+
+                            }
+                        });
+                    }
+                });
+            }
+            
+            var zki=0;
+            var zkf;
+            
+            $(".suocl").click(function(){
+                second();
+                ga('send', 'event', 'Success-page', 'click','预览我的七夕告白');
+                pageStopTime("录音预览",false,userStr);
+                pageStopTime("尾页",true,userStr);
+                
+                $("#suo").attr("class","dn").hide();
+                $("#p9cp").show();
+                $(".p9").show();
+                $(".head span").html(nickname)
+                $(".head img").attr("src",headpic)
+                
+                sh=2;
+                share();
+                
+                //$("#p9cp .zk").attr("class","pa zk")
+                //$("#p9cp .hei").show();
+                //$("#p9cp .zk").addClass("zk"+swp)
+                setTimeout(function(){
+                //  $("#p9cp .zk").addClass("zk" + swp + " zks")
+                },1100)
+                
+                
+                $(".p9 .gblz").show();
+                $(".p9 .head").show();
+                //suoplay()
+            })
+                            
+            
+            var order=0;
+            var cpor;
+            function suoplay(){
+                order=0;
+                $("#suo .centers").removeClass("on");
+                cpor=setInterval(function(){
+                    order++
+                    $("#suo img").attr("src","../image/common/cp"+swp+"/"+order+".png")
+                    if(order==38){
+                        order=0;
+                        clearInterval(cpor);
+                        $("#suo .centers").addClass("on");
+                    }
+                },40)
+            }
+            $(".explore").click(function(){
+                second();
+
+                $(".load").addClass("off")
+                $("#gd").css("opacity","1")
+                // 动画css
+                // animated infinite
+                // 暂停运动
+                setTimeout(function(){
+                    $("#cube").addClass("self-animate__pause")
+                },500);
+                // 加入摇晃
+                setTimeout(function(){
+                    $("#cube").removeClass("self-animate__pause");
+                    $("#cube-wrap").addClass("animated infinite shake")
+                }, 1500);
+                // cube 面变白
+                setTimeout(function() {
+                    $("#cube").addClass("boom");
+                }, 1600);
+
+                // 发出光晕
+                setTimeout(function() {
+                    $("#self-light").addClass("on");
+                }, 2200);
+
+                setTimeout(function() {
+                    $("#self-light").addClass("animated infinite fadeOut");
+                    $("#cube-wrap").addClass("animated infinite fadeOut");
+                }, 4400)
+                setTimeout(function(){
+                    loadup()
+                },2500)
+               
+
+                // $("#self-light").removeClass("on");
+                // setTimeout(function(){
+                //     loadup()
+                // },1500)
+                setTimeout(function(){
+                    $("#cube-wrap").hide();
+                },4400)
+                setTimeout(function(){
+                    $("#self-light").removeClass("on");
+                },5000)
+                setTimeout(function() {
+                   
+                   
+                    setTimeout(function() {
+                        $("#cube-wrap").removeClass("fadeOut");
+                    },1200)
+                }, 5400)
+            });
+            
+            
+            share();
+            function share(){
+                
+                var slink;
+                var simg;
+                var stitle;
+                var stent;
+                // todo: php 这里可能需要再加一个接口
+                // $.ajax({
+                //     type: 'GET',
+                //     url: '获取分享在聊天页显示的信息',
+                //     dataType: 'JSON',
+                //     success: function(json) {
+                //         wxShare({
+                //             appid: json.appid,
+                //             timestamp: json.timestamp,
+                //             nonceStr: json.nonceStr,
+                //             signature: json.signature,
+                //             lineLink: slink,
+                //             imgUrl: simg,
+                //             shareTitle: stitle,
+                //             descContent: stent
+                //         });
+                //     },
+                //     error: function(json) {
+                //         console.error(json.error);
+                //     }
+                // });
+            }
+        </script>
+        
+        
+        <script type="text/javascript">
+            
+            var lan=1;
+            (function(){
+             var init = function(){
+              var updateOrientation = function(){
+               var orientation = window.orientation;
+               switch(orientation){
+                case 90:
+                case -90:
+                 orientation = 'landscape';
+                // alert("横屏")
+               
+                $("#lock").show();
+                 break;
+                default:
+                 orientation = 'portrait';
+                 //alert("竖屏")
+                 
+                    $("#lock").hide();
+                 
+                 break;
+               }
+             
+               //do something
+               //比如在html标签加一个状态
+               //然后根据不同状态，显示不同大小
+               document.body.parentNode.setAttribute('class',orientation);
+              };
+             
+              window.addEventListener('orientationchange',updateOrientation,false);
+              updateOrientation();
+             };
+             
+             window.addEventListener('DOMContentLoaded',init,false);
+            })();
+        </script>
+        
+        <script type="text/javascript">
+
+                var lastUpdateTime;
+                var acDelta;
+                var msPerFrame;
+                
+                var loadimg = null;
+                var loadctx = null;
+                var loadcan;
+                
+                var prodimg=null;
+                var prodctx=null;
+                var prodcan;
+                var prnum;
+                var prnun;
+                
+                var packimg = null;
+                var packctx = null;
+                var packcan;
+                
+                var periimg=null;
+                var perictx=null;
+                var perican;
+                
+                
+                loadcan = document.getElementById("cloadimg");
+                loadctx = loadcan.getContext("2d");
+                loadctx.fillStyle = 'rgba(255, 255, 255, 0)';
+                loadctx.fillRect(0, 0, 640, 1140);
+                loadimg = document.createElement('img');
+                loadimg.src = "img/load/1.jpg";
+                
+//              function windows() {
+//                  loadcan = document.getElementById("cloadimg");
+//                  loadctx = loadcan.getContext("2d");
+//                  loadctx.fillStyle = 'rgba(255, 255, 255, 0)';
+//                  loadctx.fillRect(0, 0, 640, 1140);
+//                  loadimg = document.createElement('img');
+//                  loadimg.src = "img/load/0.png";
+//                  loadup();
+//                  initime(20)
+                    
+//                  prodcan = document.getElementById("cprodimg");
+//                  prodctx = prodcan.getContext("2d");
+//                  prodctx.fillStyle = 'rgba(255, 255, 255, 0)';
+//                  prodctx.fillRect(0, 0, 640, 1140);
+//                  prodimg = document.createElement('img');
+//                  loadimg.src = "img/load/0.png";
+                    
+//                  prnum=1;
+//                  prnun=19;
+//                  initime(28)
+//                  produp();
+
+//                  prnum=2;
+//                  prnun=26
+//                  initime(20)
+//                  produp();
+
+//                  prnum=3;
+//                  prnun=19;
+//                  initime(20)
+//                  produp();
+
+//                  prnum=4;
+//                  prnun=25;
+//                  initime(20)
+//                  produp();
+
+//                  prnum=5;
+//                  prnun=40;
+//                  initime(12)
+//                  produp();
+
+//                  prnum=6;
+//                  prnun=24;
+//                  initime(12)
+//                  produp();
+                    
+                    packcan = document.getElementById("cpackage");
+                    packctx = packcan.getContext("2d");
+                    packctx.fillStyle = 'rgba(255, 255, 255, 0)';
+                    packctx.fillRect(0, 0, 640, 1140);
+                    packimg = document.createElement('img');
+                    packimg.src = "img/cp1/1.png";
+//                  
+//                  prnum=6;
+//                  prnun=40;
+//                  initime(50)
+//                  packup();
+
+
+//                  perican = document.getElementById("cperistalsis");
+//                  perictx = perican.getContext("2d");
+//                  perictx.fillStyle = 'rgba(255, 255, 255, 0)';
+//                  perictx.fillRect(0, 0, 640, 1140);
+//                  periimg = document.createElement('img');
+//                  peri=0
+//                  prnum=6;
+//                  prnun=31;
+//                  initime(50)
+//                  periup();
+//              }
+
+                function loadredraw() {
+                    loadctx.fillStyle='rgba(255, 255, 255, 0)';
+                    loadctx.fillRect(0, 0, 640, 1140);
+                    loadctx.drawImage(loadimg, 0, 0, 640, 1140);
+                }
+
+                function prodredraw() {
+                    var prjgh;
+                    var prjgt;
+                    if(prnum==1){
+                        prjg=617;
+                        prjgt=200
+                    }else if(prnum==2){
+                        prjg=1138;
+                        prjgt=0
+                    }else if(prnum==3){
+                        prjg=617;
+                        prjgt=200;
+                    }else if(prnum==4){
+                        prjg=617;
+                        prjgt=200;
+                    }else if(prnum==5){
+                        prjg=617;
+                        prjgt=200;
+                    }else if(prnum==6){
+                        prjg=617;
+                        prjgt=200;
+                    }
+                    
+                    prodctx.clearRect(0, prjgt, 640, prjg);
+                    prodctx.drawImage(prodimg, 0, prjgt, 640, prjg);
+                }
+
+                function packredraw() {
+                    packctx.clearRect(-100, 100, 834, 611);
+                    packctx.drawImage(packimg, -100, 100, 834, 611);
+                }
+                
+                function periredraw() {
+                    console.log("12")
+                    perictx.clearRect(0, 0, 418, 418);
+                    perictx.drawImage(periimg, 0, 0, 418, 418);
+                }
+                
+                //为了让图片以规定的速度动画，我们必须追踪已经经过的时间，然后根据分配给每帧的时间播放帧。基本步骤是：
+
+                //1、按每秒几帧设置动画速度(msPerFrame)。
+
+                //2、当你循环游戏时，计算一下自最后一帧以后已经经过了多少时间（delta）。
+
+                //3、如果已经经过的时间足够把动画帧播完，那么播放这一帧并设置累积delta为0。
+
+                //4、如果已经经过的时间不够，那么记住（累积）delta时间（acDelta）。
+                
+                
+                var loadfr;
+                var load = 0;
+                function loadup() {
+                    loadfr=requestAnimFrame(loadup);
+                    var delta = Date.now() - lastUpdateTime;
+                    if(acDelta > msPerFrame) {
+                        acDelta = 0;
+                        loadimg.src = 'img/load/' + load + '.jpg';
+                        loadredraw();
+                        load++;
+                        
+                        if(load == 55){
+                            $(".p2").show();
+                            s0.unlockSwipeToNext();
+                            s0.unlockSwipeToPrev();
+                        }
+                        
+                        if(load == 60){
+                            
+                            $(".load").hide();
+                            
+                            setTimeout(function(){
+                                sjks=2;
+                                s0.removeSlide(7);
+                            },4000)
+                            console.log("12")
+                            loadimg.src = 'img/load/60.jpg';
+                            loadredraw();
+                            s0.slideTo(5, 4000, false);
+                            cancelAnimationFrame(loadfr);
+                            
+                            
+                        }
+                    } else {
+                        acDelta += delta;
+
+                    }
+                    lastUpdateTime = Date.now();
+                }
+                
+                var packfr;
+                var pack = 1;
+                function packup() {
+                    packfr=requestAnimFrame(packup);
+                    var delta = Date.now() - lastUpdateTime;
+                    if(acDelta > msPerFrame) {
+                        acDelta = 0;
+                        packredraw();
+                        packimg.src = '../image/common/cp'+prnum+'/' + pack + '.png';
+                        pack ++;
+                        if(pack >= prnun) {
+                            $("#cpackage").hide()
+                            $(".suocl").show();
+                            $("#suo .centers").addClass("on");
+                            pack = 1;
+                            cancelAnimationFrame(packfr);
+                            //initime()
+                        } //当绘制后且帧推进完，计时器就会重置。
+                    } else {
+                        acDelta += delta;
+
+                    }
+                    lastUpdateTime = Date.now();
+                }
+                
+                
+
+                //requestAnimFrame的作用基本上就是setTimeout，但浏览器知道你正在渲染帧，所以它可以优化绘制循环，以及如何与剩下的页面回流。
+
+                //在某些情况下，setTimeout比requestAnimFrame更好用，特别是对于手机。
+
+                //以下是在不同的浏览器上调用requestAnimFrame的情况也不同，标准的检测方法如下：
+                window.requestAnimFrame = (function() {
+                    return window.requestAnimationFrame ||
+                        window.webkitRequestAnimationFrame ||
+                        window.mozRequestAnimationFrame ||
+                        window.oRequestAnimationFrame ||
+                        window.msRequestAnimationFrame ||
+                        function(callback) {
+                            window.setTimeout(callback, 1000 / 3); //如果requestAnimFrame支持不可用，还是可以用回内置的setTimeout。
+                        };
+                })();
+                function initime(e){
+                    lastUpdateTime = 0;
+                    acDelta = 0;
+                    msPerFrame = e;
+                }
+                
+                function second(){
+                    $(".sec").show();
+                    setTimeout(function(){
+                        $(".sec").hide();
+                    },500)
+                }
+                
+                
+                function formatSeconds(value) {
+                   var theTime=value
+                    if(theTime == 100) {
+                        var c=theTime.toString()
+                        var a=c.substring(0,1)
+                        var b=c.substring(1,2)
+                        var d=c.substring(2,3)
+                        useimg("miao0",parseInt(a))
+                        useimg("miao1",parseInt(b))
+                        useimg("miao2",parseInt(d))
+                    }
+                    if(theTime>=10 && theTime<=99){
+                        
+                        var c=theTime.toString()
+                        var a=c.substring(0,1)
+                        var b=c.substring(1,2)
+                    
+                        useimg("miao1",parseInt(a))
+                        useimg("miao2",parseInt(b))
+                    }
+                    if(theTime<10){
+                        
+                        useimg("miao2",theTime)
+                    }
+                }
+                
+                
+                function useimg(iclass,num){
+                    switch(num)
+                    {
+                    case 0:
+                      $("."+iclass).attr("class",iclass).addClass("zero")
+                      break;
+                    case 1:
+                      $("."+iclass).attr("class",iclass).addClass("one")
+                      break;
+                    case 2:
+                      $("."+iclass).attr("class",iclass).addClass("two")
+                      break;
+                    case 3:
+                    console.log(num)
+                      $("."+iclass).attr("class",iclass).addClass("three")
+                      break;
+                    case 4:
+                      $("."+iclass).attr("class",iclass).addClass("four")
+                      break;
+                    case 5:
+                      $("."+iclass).attr("class",iclass).addClass("five")
+                      break;
+                    case 6:
+                      $("."+iclass).attr("class",iclass).addClass("six")
+                      break;
+                    case 7:
+                      $("."+iclass).attr("class",iclass).addClass("seven")
+                      break;
+                    case 8:
+                      $("."+iclass).attr("class",iclass).addClass("eight")
+                      break;
+                    case 9:
+                      $("."+iclass).attr("class",iclass).addClass("nine")
+                      break;
+                    }
+                }
+            </script>
+        <script src="js/Load.js?10" type="text/javascript" charset="utf-8"></script>
+        <script src="js/Sonic.js" type="text/javascript" charset="utf-8"></script>
+    </body>
+</html>
