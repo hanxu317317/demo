@@ -118,7 +118,7 @@ body {
 
   
   /* scene wrapper */
-  .wrapper{
+  .cube-wrapper{
     zoom: 0.8;
     height: 300px;
     position:relative;
