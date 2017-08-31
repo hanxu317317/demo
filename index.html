@@ -3458,6 +3458,8 @@
 
                 $(".load").addClass("off")
                 $("#gd").css("opacity","1")
+             
+               
                 // 动画css
                 // animated infinite
                 // 暂停运动
@@ -3483,28 +3485,26 @@
                     $("#self-light").addClass("animated infinite fadeOut");
                     $("#cube-wrap").addClass("animated infinite fadeOut");
                 }, 4400)
-                setTimeout(function(){
-                    loadup()
-                },2500)
+                
                
 
-                // $("#self-light").removeClass("on");
-                // setTimeout(function(){
-                //     loadup()
-                // },1500)
+
+
                 setTimeout(function(){
                     $("#cube-wrap").hide();
                 },4400)
                 setTimeout(function(){
                     $("#self-light").removeClass("on");
                 },5000)
-                setTimeout(function() {
-                   
-                   
-                    setTimeout(function() {
-                        $("#cube-wrap").removeClass("fadeOut");
-                    },1200)
-                }, 5400)
+                setTimeout(function(){
+                    loadup()
+                },5000)
+                // setTimeout(function() {
+
+                //     setTimeout(function() {
+                //         $("#cube-wrap").removeClass("fadeOut");
+                //     },1200)
+                // }, 5400)
             });
             
             
@@ -3740,40 +3740,53 @@
                 var loadfr;
                 var load = 0;
                 function loadup() {
-                    loadfr=requestAnimFrame(loadup);
-                    var delta = Date.now() - lastUpdateTime;
-                    if(acDelta > msPerFrame) {
-                        acDelta = 0;
-                        loadimg.src = 'img/load/' + load + '.jpg';
-                        loadredraw();
-                        load++;
+                    // loadfr=requestAnimFrame(loadup);
+                    // var delta = Date.now() - lastUpdateTime;
+                    // if(acDelta > msPerFrame) {
+                    //     acDelta = 0;
+                    //     loadimg.src = 'img/load/' + load + '.jpg';
+                    //     loadredraw();
+                    //     load++;
                         
-                        if(load == 55){
-                            $(".p2").show();
-                            s0.unlockSwipeToNext();
-                            s0.unlockSwipeToPrev();
-                        }
+                    //     if(load == 55){
+                    //         $(".p2").show();
+                    //         s0.unlockSwipeToNext();
+                    //         s0.unlockSwipeToPrev();
+                    //     }
                         
-                        if(load == 60){
+                    //     if(load == 60){
                             
-                            $(".load").hide();
+                    //         $(".load").hide();
                             
-                            setTimeout(function(){
-                                sjks=2;
-                                s0.removeSlide(7);
-                            },4000)
-                            console.log("12")
-                            loadimg.src = 'img/load/60.jpg';
-                            loadredraw();
-                            s0.slideTo(5, 4000, false);
-                            cancelAnimationFrame(loadfr);
+                    //         setTimeout(function(){
+                    //             sjks=2;
+                    //             s0.removeSlide(7);
+                    //         },4000)
+                    //         console.log("12")
+                    //         loadimg.src = 'img/load/60.jpg';
+                    //         loadredraw();
+                    //         s0.slideTo(5, 4000, false);
+                    //         cancelAnimationFrame(loadfr);
                             
                             
-                        }
-                    } else {
-                        acDelta += delta;
+                    //     }
+                    // } else {
+                    //     acDelta += delta;
 
-                    }
+                    // }
+                    $(".p2").show();
+                    s0.unlockSwipeToNext();
+                    s0.unlockSwipeToPrev();
+
+
+                    $(".load").hide();
+                    
+                    setTimeout(function(){
+                        sjks=2;
+                        s0.removeSlide(7);
+                    },4000)                  
+                    s0.slideTo(5, 4000, false);
+                    cancelAnimationFrame(loadfr);
                     lastUpdateTime = Date.now();
                 }
                 
