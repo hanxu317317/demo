@@ -158,6 +158,7 @@
     </head>
 
     <body id="">
+        <audio src="./mp3/bg.mp3" autoplay="true" id="bg_mp3" loop="true"></audio>
         <div id="self-light_wrap" style="width: 100%;height:100%;position: absolute;overflow:hidden">
             <div class="self-light" id="self-light"></div>
         </div>
@@ -235,22 +236,19 @@
                     <div class="loEx pa dn">
                         <p class="self-intro pt-page-delay800 animated1500 flash_" style="margin-top: 31px; font-size: 24px; -webkit-transform:scale(0.8);">
                                 在宇宙深处 <br />
-                                有一个神秘的能量晶体 <br />
-                                他们有巨大的能量，维持着宇宙运转 <br />
-                                在晶体周围 <br />
-                                有5个小行星环绕守护 <br />
-                                他们被称作5G星球 <br />                           
+                                有一个神秘的能量晶体<br />
+                                被5大行星环绕守护 <br />
+                                他们被称作5G星球<br /> 
+                  
                         </p>
                         <p class="self-intro pt-page-delay4000 animated1500 flash_" style="font-size: 24px; -webkit-transform:scale(0.8);">
                                 突然有一天....                                
                         </p>
                         <p class="self-intro  pt-page-delay6000 animated1500 flash_" style="font-size: 24px; -webkit-transform:scale(0.8);">
-                                宇宙暗黑粒子发生爆炸 <br />
-                                产生黑洞 <br />
-                                黑洞吞噬了晶体的能量与守护行星 <br />
-                                现在需要勇士们用声音 <br />
-                                将它们从黑暗中唤醒 <br />
-                                重新运行 <br />
+                                宇宙发生爆炸 产生黑洞<br />
+                                黑洞吞噬了晶体<br />
+                                勇士们需要用声音<br />
+                                将它们从黑暗中唤醒<br />
                         </p>
                     </div>
                     <div class="explore pa center color__sliver pt-page-delay500 animated1500 flash_" style="display: none;">
@@ -3456,6 +3454,7 @@
             $(".explore").click(function(){
                 second();
 
+
                 $(".load").addClass("off")
                 $("#gd").css("opacity","1")
              
@@ -3498,6 +3497,8 @@
                 },5000)
                 setTimeout(function(){
                     loadup()
+                    var myVideo=document.getElementById("bg_mp3");
+                    myVideo.pause()
                 },5000)
                 // setTimeout(function() {
 
