@@ -400,6 +400,15 @@ animation: bg-crystal003 90s infinite;
 animation-timing-function: linear;
 }
 
+#blackHole {
+  position:fixed;
+  top:18%;
+  left:51%;
+  width:100%;
+  height:520px;
+  display: none;
+  background:url(../image/blackhole.png)no-repeat;
+}
 #worldCrystals {
   position:fixed;
   top:0px;
