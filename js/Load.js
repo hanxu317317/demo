@@ -119,23 +119,23 @@ var LoadingSwit = function(num) {
 
 var Loadimg=[];
 // 猫头鹰
-for (var i = 1; i <= 4; i++) {
+for (var i = 1; i <= 1; i++) {
     Loadimg.push('../' + "image/x1/" + i + ".png");
 }
 // 小蝴蝶
-for (var i = 1; i <= 9; i++) {
+for (var i = 1; i <= 1; i++) {
     Loadimg.push('../' + "image/x2/" + i + ".png");
     Loadimg.push('../' + "image/x3/" + i + ".png");
     Loadimg.push('../' + "image/x4/" + i + ".png");
 }
 
 // 小虫子
-for (var i = 1; i <= 10; i++) {
+for (var i = 1; i <= 1; i++) {
     Loadimg.push('../' + "image/x5/" + i + ".png");
 }
 
 // 小猪
-for (var i = 1; i <= 6; i++) {
+for (var i = 1; i <= 1; i++) {
     Loadimg.push('../' + "image/x6/" + i + ".png");
 }
 // 都放在 image/common
