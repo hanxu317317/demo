@@ -307,41 +307,81 @@ body {
     height: 30px;
     border-radius: 50%;
     opacity: 0.5;
-    background: -webkit-radial-gradient(rgb(1, 31, 255), rgba(255, 222, 65, 0.00) 90%);
+    background: white;
+    /* background: -webkit-radial-gradient(rgb(3, 80, 238), rgba(255, 222, 65, 0.00) 90%); */
     position: absolute;
-    box-shadow: 0 0 8vh rgb(1, 31, 255);
+    box-shadow: 0 0 38px white;
   }
   .front .line5, .back .line5 {
-    top: -1%;
-    left: -1%;
+    top: 0%;
+    left: 0%;
     animation: left-right 10s infinite linear;
   }
   .front .line6, .back .line6 {
-    left: 101%;
-    top: -1%;
+    left: 100%;
+    top: 0%;
     animation: top-bottom 10s infinite linear;
   }
 
   .front .line7, .back .line7{
-    right: -1%;
-    top: 101%;
+    right: 0%;
+    top: 100%;
     animation: right-left 10s infinite linear;
   }
   .front .line8, .back .line8{
-    left: -1%;
-    bottom: 101%;
+    left: 0%;
+    bottom: 100%;
     animation: bottom-top 10s infinite linear;
   }
- 
+  .bbleft .bb {
+      position: absolute;
+      zoom:5;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    margin: auto;
+    color: #00a0e9;
+  }
+  .bbleft .bb:before, .bbleft .bb:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    z-index: -1;
+    margin: -5%;
+    box-shadow: inset 0 0 0 2px;
+    -webkit-animation: around 8s linear infinite;
+    animation: around 8s linear infinite;
+  }
+
+   @-webkit-keyframes around{
+    0%, 100% {
+    clip: rect(0px, 50.0px, 2px, 0px);
+    }
+    25% {
+    clip: rect(0px, 2px, 50.0px, 0px);
+    }
+    50% {
+    clip: rect(42.0px, 50.0px, 50.0px, 0px);
+    }
+    75% {
+    clip: rect(0px, 50.0px, 50.0px, 42.0px);
+    }
+} 
   @-webkit-keyframes left-right {
-    0% { left: -1%; }
+    0% { left: 0%; }
     50%   { left: 100%;}
-    100%   { left: -1%;}
+    100%   { left: 0%;}
   }
   @-webkit-keyframes right-left {
     0% { right: 0%; }
     50%   { right: 100%;}
-    100%   { right: -1%;}
+    100%   { right: 0%;}
   }
 
   @-webkit-keyframes top-bottom {
@@ -367,7 +407,7 @@ body {
     letter-spacing: 0.1em;
     color: #EEE;
     background: url(../image/5g.png);
-    text-shadow: -1px -1px #CCC, -2px -1px #BBB, -3px -2px #AAA, -4px -2px #999, -5px -3px #888, -6px -3px #777; */
+    text-shadow: 0px -1px #CCC, -2px -1px #BBB, -3px -2px #AAA, -4px -2px #999, -5px -3px #888, -6px -3px #777; */
   }
   .g5:before {
     /* content: attr(data-shadow);
