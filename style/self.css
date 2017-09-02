@@ -301,6 +301,59 @@ body {
     top: 0;
     bottom: 0;
   }
+  b .line5, b .line6, b .line7, b .line8{
+    display: inline-block;
+    width:30px;
+    height: 30px;
+    border-radius: 50%;
+    opacity: 0.5;
+    background: -webkit-radial-gradient(rgb(1, 31, 255), rgba(255, 222, 65, 0.00) 90%);
+    position: absolute;
+    box-shadow: 0 0 8vh rgb(1, 31, 255);
+  }
+  .front .line5, .back .line5 {
+    top: -1%;
+    left: -1%;
+    animation: left-right 10s infinite linear;
+  }
+  .front .line6, .back .line6 {
+    left: 101%;
+    top: -1%;
+    animation: top-bottom 10s infinite linear;
+  }
+
+  .front .line7, .back .line7{
+    right: -1%;
+    top: 101%;
+    animation: right-left 10s infinite linear;
+  }
+  .front .line8, .back .line8{
+    left: -1%;
+    bottom: 101%;
+    animation: bottom-top 10s infinite linear;
+  }
+ 
+  @-webkit-keyframes left-right {
+    0% { left: -1%; }
+    50%   { left: 100%;}
+    100%   { left: -1%;}
+  }
+  @-webkit-keyframes right-left {
+    0% { right: 0%; }
+    50%   { right: 100%;}
+    100%   { right: -1%;}
+  }
+
+  @-webkit-keyframes top-bottom {
+    0% { top: 0%; }
+    50%   { top: 100%;}
+    100%   { top: 0%;}
+  }
+  @-webkit-keyframes bottom-top {
+    0% { bottom: 0%; }
+    50%   { bottom: 100%;}
+    100%   { bottom: 0%;}
+  }
 
   .g5 {
     background: url(../image/5g.png);
