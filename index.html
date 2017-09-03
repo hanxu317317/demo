@@ -165,7 +165,7 @@
             Your browser does not support the audio tag.
         </audio>
 
-         <audio id="boom_mp3" loop="false">   
+         <audio id="boom_mp3" loop="false" volume="0">   
             <source src="./mp3/boom.mp3" type="audio/mpeg">
             Your browser does not support the audio tag.
         </audio>
@@ -274,7 +274,7 @@
                                 将它们从黑暗中唤醒<br />
                         </p>
                     </div>
-                    <div class="explore pa center color__sliver pt-page-delay500 animated1500 flash_" style="display: none;">
+                    <div id="explore" class="explore pa center color__sliver pt-page-delay500 animated1500 flash_" style="display: none;">
                         开始体验
                     </div>
                     <div class="ment pa f20 center pt-page-delay1000 animated1500 flash_" style="display: none;">
@@ -1556,7 +1556,16 @@
                 }, false);
                 document.addEventListener("touchstart",play, false);
             }
-          audioAutoPlay("bg_mp3")
+          audioAutoPlay("bg_mp3");
+          function boomPlay() {
+                var boom_mp3 = document.getElementById('boom_mp3');
+                boom_mp3.play();
+                setTimeout(function() {
+                    boom_mp3.pause();
+                }, 3000)
+          }
+          var _explore = document.getElementById("explore");
+          _explore.addEventListener("touchstart",boomPlay, false);
             // php 需要在这里输出微信用户的名称
             var nickname='韩旭';
             // php 换成用户的头像
@@ -3517,11 +3526,6 @@
 
                 // 发出光晕
                 setTimeout(function() {
-                    var boom_mp3 = document.getElementById('boom_mp3');
-                    boom_mp3.play();
-                    setTimeout(function() {
-                        boom_mp3.pause();
-                    }, 3000)
                     $("#self-light").addClass("on");
                 }, 2200);
 
