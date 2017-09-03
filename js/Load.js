@@ -71,13 +71,13 @@ var LoadingSwit = function(num) {
                     setTimeout(function() {
                         $(".self-intro").eq(0).hide();
                     }, 500)
-                },3200);
+                },5200);
                 setTimeout(function(i) {
                     $(".self-intro").eq(1).addClass("off");
                     setTimeout(function() {
                         $(".self-intro").eq(1).hide();
                     }, 100)
-                },5800);
+                },7800);
                 // setTimeout(function(i) {
                 //     $(".self-intro").eq(2).addClass("off");
                 //     setTimeout(function() {
