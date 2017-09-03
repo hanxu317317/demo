@@ -252,17 +252,17 @@
                 
                 <div class="xia pa">
                     <div class="loEx pa dn">
-                        <p class="self-intro pt-page-delay800 animated1500 flash_" style="margin-top: 31px; font-size: 24px; -webkit-transform:scale(0.8);">
+                        <p class="self-intro pt-page-delay800 animated1500 flash_" style="margin-top: 31px; font-size: 24px; -webkit-transform:scale(0.8);margin-top: 80px;">
                                 在宇宙深处 <br />
                                 有一个神秘的能量晶体<br />
                                 被5大行星环绕守护 <br />
-                                他们被称作5系星球<br /> 
+                                他们被称作G系星球<br /> 
                   
                         </p>
                         <p class="self-intro pt-page-delay6000 animated1500 flash_" style="font-size: 24px; -webkit-transform:scale(0.8); margin-top: 100px;" >
                              突然有一天....                  
                         </p>
-                        <p class="self-intro  pt-page-delay8000 animated1500 flash_" style="font-size: 24px; -webkit-transform:scale(0.8);">
+                        <p class="self-intro  pt-page-delay8000 animated1500 flash_" style="font-size: 24px; -webkit-transform:scale(0.8);margin-top: 80px;">
                                 宇宙发生爆炸<br />
                                 黑洞吞噬了晶体<br />
                                 需要点燃你的小宇宙<br />
@@ -1772,14 +1772,15 @@
                 $(".p4_tick").fadeOut();
                 //$(".p4bz").html("2/2")
                 formatSeconds(22)
+                
                 if(swiper.activeIndex=="0"){
-                    swp=6;
-                }else if(swiper.activeIndex=="7"){
+                    swp=5;
+                }else if(swiper.activeIndex=="6"){
                     swp=1;
                 }else{
                     swp=swiper.activeIndex
                 }
-                
+                console.log("swiper.activeIndex", swp)
                 //if()
                 
                 $(".swiper-button-next").hide();
@@ -3380,6 +3381,7 @@
                                     ylsy=3;
                                     
                                     dec=1;
+
                                     $("#p9cp").show();
                                     $(".b255").fadeOut();
                                     $("#suo").addClass("animated500 flash_").show();
