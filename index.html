@@ -164,6 +164,11 @@
             <source src="./mp3/bg.mp3" type="audio/mpeg">
             Your browser does not support the audio tag.
         </audio>
+
+         <audio id="boom_mp3" loop="false">   
+            <source src="./mp3/boom.mp3" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
         <div id="self-light_wrap" style="width: 100%;height:100%;position: absolute;overflow:hidden">
             <div class="self-light" id="self-light"></div>
         </div>
@@ -3512,6 +3517,11 @@
 
                 // 发出光晕
                 setTimeout(function() {
+                    var boom_mp3 = document.getElementById('boom_mp3');
+                    boom_mp3.play();
+                    setTimeout(function() {
+                        boom_mp3.pause();
+                    }, 3000)
                     $("#self-light").addClass("on");
                 }, 2200);
 
